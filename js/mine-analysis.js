@@ -5,13 +5,16 @@
 (function () {
   'use strict';
 
-  if (typeof MINES_DATA === 'undefined' || typeof STOCKS_DATA === 'undefined') return;
-
   var currentTicker = null;
   var sortCol = null;
   var sortDir = 'asc';
 
+  function dataReady() {
+    return typeof MINES_DATA !== 'undefined' && typeof STOCKS_DATA !== 'undefined';
+  }
+
   function getStock(ticker) {
+    if (typeof STOCKS_DATA === 'undefined') return null;
     for (var i = 0; i < STOCKS_DATA.length; i++) {
       if (STOCKS_DATA[i].ticker === ticker) return STOCKS_DATA[i];
     }
@@ -88,22 +91,23 @@
     var r = mine.reserves;
     if (!r) return { val: null, label: '—' };
     if (r.copper_blbs) return { val: r.copper_blbs, label: fmt(r.copper_blbs, 1) + ' Blbs Cu' };
+    if (r.copper_kt) return { val: r.copper_kt, label: fmt(r.copper_kt) + ' kt Cu' };
     if (r.gold_moz) return { val: r.gold_moz, label: fmt(r.gold_moz, 1) + ' Moz Au' };
     if (r.silver_moz) return { val: r.silver_moz, label: fmt(r.silver_moz, 1) + ' Moz Ag' };
     if (r.copper_mt) return { val: r.copper_mt, label: fmt(r.copper_mt, 1) + ' Mt Cu' };
     return { val: null, label: '—' };
   }
 
-  // ── COMPANY SELECTOR ──
-  var selector = document.getElementById('company-selector') || document.getElementById('mine-company-select');
-  if (selector) {
-    selector.addEventListener('change', function () {
-      if (this.value) loadCompany(this.value);
-    });
-    if (selector.value) loadCompany(selector.value);
+  function esc(s) {
+    if (!s) return '';
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
   }
 
+  // ── LOAD COMPANY ──
   function loadCompany(ticker) {
+    if (!dataReady()) return;
     currentTicker = ticker;
     var stock = getStock(ticker);
     var mines = MINES_DATA[ticker] || [];
@@ -176,23 +180,6 @@
       default: return null;
     }
   }
-
-  document.querySelectorAll('.mine-data-table thead th[data-sort]').forEach(function (th) {
-    th.addEventListener('click', function () {
-      var col = this.getAttribute('data-sort');
-      if (sortCol === col) {
-        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-      } else {
-        sortCol = col;
-        sortDir = 'asc';
-      }
-      document.querySelectorAll('.mine-data-table thead th').forEach(function (h) {
-        h.classList.remove('sort-asc', 'sort-desc');
-      });
-      this.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
-      if (currentTicker) loadCompany(currentTicker);
-    });
-  });
 
   // ── COST CURVE CHART ──
   function renderCostCurve(mines, stock) {
@@ -314,6 +301,7 @@
 
   // ── CROSS-COMPANY BENCHMARKS ──
   function buildAllMines() {
+    if (typeof MINES_DATA === 'undefined') return [];
     var all = [];
     Object.keys(MINES_DATA).forEach(function (ticker) {
       MINES_DATA[ticker].forEach(function (m) {
@@ -388,12 +376,11 @@
     html += '<th style="padding:8px;text-align:left;">Rank</th><th style="padding:8px;text-align:left;">Mine</th><th style="padding:8px;">Ticker</th><th style="padding:8px;">' + valueHeader + '</th>';
     html += '</tr></thead><tbody>';
     items.forEach(function (item, i) {
-      var tier = aiscTierClass(item.val, item.metal);
       html += '<tr style="background:' + (i % 2 ? 'var(--bg-secondary)' : 'var(--bg-primary)') + ';">';
       html += '<td style="padding:6px 8px;font-weight:700;color:var(--primary);">#' + (i + 1) + '</td>';
       html += '<td style="padding:6px 8px;font-weight:600;">' + esc(item.name) + '</td>';
       html += '<td style="padding:6px 8px;text-align:center;font-family:JetBrains Mono,monospace;">' + item.ticker + '</td>';
-      html += '<td style="padding:6px 8px;text-align:center;font-family:JetBrains Mono,monospace;' + (valueHeader === 'Cost' ? '' : '') + '">' + item[valueKey] + '</td>';
+      html += '<td style="padding:6px 8px;text-align:center;font-family:JetBrains Mono,monospace;">' + item[valueKey] + '</td>';
       html += '</tr>';
     });
     html += '</tbody></table>';
@@ -401,15 +388,13 @@
   }
 
   // ── BENCHMARK COMPARATOR ──
-  var compareBtn = document.getElementById('mine-compare-btn');
-  if (compareBtn) {
+  function setupComparator() {
+    var compareBtn = document.getElementById('mine-compare-btn');
+    if (!compareBtn) return;
     compareBtn.addEventListener('click', function () {
       var name = document.getElementById('bm-name').value || 'Your Mine';
-      var metal = document.getElementById('bm-metal').value || 'gold';
       var prod = parseFloat(document.getElementById('bm-prod').value) || 0;
       var aisc = parseFloat(document.getElementById('bm-aisc').value) || 0;
-      var reserves = parseFloat(document.getElementById('bm-reserves').value) || 0;
-      var life = parseFloat(document.getElementById('bm-life').value) || 0;
 
       var results = document.getElementById('mine-benchmark-results');
       if (!results) return;
@@ -454,22 +439,55 @@
     });
   }
 
-  function esc(s) {
-    if (!s) return '';
-    var d = document.createElement('div');
-    d.textContent = s;
-    return d.innerHTML;
+  // ── SORT HEADERS ──
+  function setupSortHeaders() {
+    document.querySelectorAll('.mine-data-table thead th[data-sort]').forEach(function (th) {
+      th.addEventListener('click', function () {
+        var col = this.getAttribute('data-sort');
+        if (sortCol === col) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortCol = col;
+          sortDir = 'asc';
+        }
+        document.querySelectorAll('.mine-data-table thead th').forEach(function (h) {
+          h.classList.remove('sort-asc', 'sort-desc');
+        });
+        this.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+        if (currentTicker) loadCompany(currentTicker);
+      });
+    });
   }
 
-  // ── INIT ──
-  function initPage() {
-    renderBenchmarks();
-    if (selector && selector.value) loadCompany(selector.value);
+  // ── SELECTOR + INIT ──
+  function setupSelector() {
+    var sel = document.getElementById('company-selector') || document.getElementById('mine-company-select');
+    if (!sel) return null;
+    sel.addEventListener('change', function () {
+      if (this.value) loadCompany(this.value);
+    });
+    return sel;
   }
+
+  function initPage() {
+    if (!dataReady()) return;
+    var sel = document.getElementById('company-selector') || document.getElementById('mine-company-select');
+    setupSortHeaders();
+    setupComparator();
+    renderBenchmarks();
+    if (sel && sel.value) loadCompany(sel.value);
+  }
+
+  var selector = setupSelector();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPage);
   } else {
     initPage();
   }
+
+  window.addEventListener('load', function () {
+    var sel = document.getElementById('company-selector') || document.getElementById('mine-company-select');
+    if (sel && sel.value) loadCompany(sel.value);
+  });
 })();
