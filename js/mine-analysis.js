@@ -95,10 +95,10 @@
   }
 
   // ── COMPANY SELECTOR ──
-  var selector = document.getElementById('company-selector');
+  var selector = document.getElementById('company-selector') || document.getElementById('mine-company-select');
   if (selector) {
     selector.addEventListener('change', function () {
-      loadCompany(this.value);
+      if (this.value) loadCompany(this.value);
     });
     if (selector.value) loadCompany(selector.value);
   }
@@ -113,7 +113,8 @@
     if (el('ov-ticker')) el('ov-ticker').textContent = ticker + ' · ' + (stock ? stock.exchange : '');
     if (el('ov-mcap')) el('ov-mcap').textContent = stock ? '$' + stock.market_cap_b + 'B' : '—';
     if (el('ov-cat')) el('ov-cat').textContent = stock ? stock.category.charAt(0).toUpperCase() + stock.category.slice(1) : '';
-    if (el('mine-count')) el('mine-count').textContent = mines.length + ' operations';
+    var countEl = el('mine-count') || el('mine-table-caption');
+    if (countEl) countEl.textContent = mines.length + ' operations';
 
     renderMineTable(mines, stock);
     renderCostCurve(mines, stock);
@@ -164,7 +165,7 @@
   function getSortVal(mine, col) {
     switch (col) {
       case 'name': return mine.name || '';
-      case 'country': return mine.country || '';
+      case 'country': case 'location': return mine.country || '';
       case 'ownership': return mine.ownership_pct;
       case 'type': return mine.type || '';
       case 'production': return primaryProd(mine).val;
@@ -461,13 +462,14 @@
   }
 
   // ── INIT ──
-  document.addEventListener('DOMContentLoaded', function () {
+  function initPage() {
     renderBenchmarks();
     if (selector && selector.value) loadCompany(selector.value);
-  });
+  }
 
-  if (document.readyState !== 'loading') {
-    renderBenchmarks();
-    if (selector && selector.value) loadCompany(selector.value);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage);
+  } else {
+    initPage();
   }
 })();
