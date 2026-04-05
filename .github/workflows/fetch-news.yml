@@ -1,0 +1,104 @@
+name: Daily News Fetch
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 6 AM UTC daily
+    - cron: '0 14 * * *'  # 2 PM UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch mining news from APIs
+        run: |
+          NEWS_FILE="news-data.json"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # Try GNews API first
+          if [ -n "${{ secrets.GNEWS_API_KEY }}" ]; then
+            GNEWS=$(curl -sf "https://gnews.io/api/v4/search?q=mining+stocks+OR+copper+price+OR+gold+price+OR+lithium+mining&lang=en&max=20&apikey=${{ secrets.GNEWS_API_KEY }}" || echo "")
+          fi
+
+          # Try NewsData.io as fallback
+          if [ -z "$GNEWS" ] || [ "$GNEWS" = "" ] && [ -n "${{ secrets.NEWSDATA_API_KEY }}" ]; then
+            NEWSDATA=$(curl -sf "https://newsdata.io/api/1/news?apikey=${{ secrets.NEWSDATA_API_KEY }}&q=mining%20stocks%20OR%20copper%20OR%20gold%20mining&language=en&size=20" || echo "")
+          fi
+
+          # Build unified JSON
+          node -e "
+          const fs = require('fs');
+          const gnews = process.env.GNEWS_RAW || '';
+          const newsdata = process.env.NEWSDATA_RAW || '';
+          let articles = [];
+
+          // Parse GNews
+          try {
+            const g = JSON.parse(gnews);
+            if (g.articles) {
+              articles = g.articles.map(a => ({
+                title: a.title,
+                source: a.source ? a.source.name : '',
+                date: (a.publishedAt || '').slice(0,10),
+                category: categorize(a.title),
+                url: a.url,
+                image: a.image || ''
+              }));
+            }
+          } catch(e) {}
+
+          // Fallback: parse NewsData
+          if (articles.length === 0) {
+            try {
+              const n = JSON.parse(newsdata);
+              if (n.results) {
+                articles = n.results.map(a => ({
+                  title: a.title,
+                  source: a.source_name || a.source_id || '',
+                  date: (a.pubDate || '').slice(0,10),
+                  category: categorize(a.title),
+                  url: a.link,
+                  image: a.image_url || ''
+                }));
+              }
+            } catch(e) {}
+          }
+
+          function categorize(title) {
+            const t = (title || '').toLowerCase();
+            if (t.includes('copper')) return 'copper';
+            if (t.includes('gold')) return 'gold';
+            if (t.includes('silver')) return 'silver';
+            if (t.includes('lithium')) return 'lithium';
+            if (t.includes('iron') || t.includes('bhp') || t.includes('rio tinto') || t.includes('vale')) return 'diversified';
+            return 'mining';
+          }
+
+          const output = {
+            fetched_at: '${TIMESTAMP}',
+            count: articles.length,
+            articles: articles
+          };
+          fs.writeFileSync('${NEWS_FILE}', JSON.stringify(output, null, 2));
+          console.log('Wrote ' + articles.length + ' articles to ${NEWS_FILE}');
+          " || echo '{"fetched_at":"'$TIMESTAMP'","count":0,"articles":[]}' > $NEWS_FILE
+        env:
+          GNEWS_RAW: ${{ env.GNEWS }}
+          NEWSDATA_RAW: ${{ env.NEWSDATA }}
+
+      - name: Commit updated news
+        run: |
+          git config user.name "news-bot"
+          git config user.email "bot@theresourceinvestor.io"
+          git add news-data.json
+          if git diff --cached --quiet; then
+            echo "No news changes to commit"
+          else
+            git commit -m "Auto-update news feed $(date -u +%Y-%m-%d)"
+            git push
+          fi

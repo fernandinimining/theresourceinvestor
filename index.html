@@ -131,12 +131,38 @@
   <section class="section">
     <div class="container">
       <h2 class="section-title">Premium: Interactive Sensitivity Analysis</h2>
-      <p class="section-subtitle">Adjust metal prices. See real-time impact on every stock.</p>
+      <p class="section-subtitle">Adjust metal prices. See real-time impact on revenue, EBITDA, and per-share value for every major miner.</p>
 
-      <div id="sens-demo-fcx" data-sensitivity-ticker="FCX" style="margin: 24px 0;"></div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; margin: 24px 0;">
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">Freeport-McMoRan (FCX) <span style="font-size:12px; color:var(--text-secondary);">Copper</span></h3>
+          <div id="sens-demo-fcx" data-sensitivity-ticker="FCX"></div>
+        </div>
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">Barrick Gold (GOLD) <span style="font-size:12px; color:var(--text-secondary);">Gold</span></h3>
+          <div id="sens-demo-gold" data-sensitivity-ticker="GOLD"></div>
+        </div>
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">Newmont Corp (NEM) <span style="font-size:12px; color:var(--text-secondary);">Gold</span></h3>
+          <div id="sens-demo-nem" data-sensitivity-ticker="NEM"></div>
+        </div>
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">Southern Copper (SCCO) <span style="font-size:12px; color:var(--text-secondary);">Copper</span></h3>
+          <div id="sens-demo-scco" data-sensitivity-ticker="SCCO"></div>
+        </div>
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">BHP Group (BHP) <span style="font-size:12px; color:var(--text-secondary);">Diversified</span></h3>
+          <div id="sens-demo-bhp" data-sensitivity-ticker="BHP"></div>
+        </div>
+        <div>
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:8px;">Teck Resources (TECK) <span style="font-size:12px; color:var(--text-secondary);">Copper</span></h3>
+          <div id="sens-demo-teck" data-sensitivity-ticker="TECK"></div>
+        </div>
+      </div>
 
-      <p style="text-align: center; margin-top: 8px;">
-        <a href="premium.html" class="premium-cta-btn">Get Full Premium Access</a>
+      <p style="text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:16px;">+ 14 more miners including Rio Tinto, Vale, Agnico Eagle, Pan American Silver, Albemarle, and more</p>
+      <p style="text-align: center;">
+        <a href="premium.html" class="premium-cta-btn">Unlock All 20 Miners — $14.99/mo</a>
       </p>
     </div>
   </section>
