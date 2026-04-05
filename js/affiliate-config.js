@@ -6,26 +6,20 @@
  * the entire site will update automatically.
  *
  * PAYOUT SUMMARY:
- *   Interactive Brokers — $200-600/funded account — pays via direct deposit
- *   TradingView         — up to $15/subscription  — pays via PayPal
- *   Webull              — $20-75/funded account    — pays via account credit
+ *   TradingView         — up to $15/subscription  — pays via PayPal (aff_id=165309)
  *   Seeking Alpha       — $15-35/Premium signup    — pays via Impact.com (PayPal/deposit)
  *   Koyfin              — 20-30% recurring         — pays via PayPal
  *   Finviz              — $5-10/Elite subscription  — pays via PayPal
  *
  * SIGNUP LINKS (open these in your browser):
- *   IBKR:          https://www.interactivebrokers.com/en/trading/ib-account-referral-program.php
  *   TradingView:   https://www.tradingview.com/partner-program/
- *   Webull:        https://www.webull.com/activity
  *   Seeking Alpha: https://seekingalpha.com/page/affiliate-program  (or apply via Impact.com)
  *   Koyfin:        https://www.koyfin.com  (contact for affiliate program)
  *   Finviz:        https://finviz.com  (contact for affiliate program)
  */
 
 var AFFILIATE_LINKS = {
-  ibkr:          'https://www.interactivebrokers.com',          // REPLACE with your IBKR referral link
   tradingview:   'https://www.tradingview.com/?aff_id=165309',
-  webull:        'https://www.webull.com',                       // REPLACE with your Webull referral link
   seekingalpha:  'https://www.seekingalpha.com',                 // REPLACE with your Seeking Alpha affiliate link
   koyfin:        'https://www.koyfin.com',                       // REPLACE with your Koyfin affiliate link
   finviz:        'https://finviz.com'                            // REPLACE with your Finviz affiliate link
@@ -35,9 +29,7 @@ var AFFILIATE_LINKS = {
   'use strict';
 
   var domainMap = {
-    'interactivebrokers.com': 'ibkr',
     'tradingview.com':        'tradingview',
-    'webull.com':             'webull',
     'seekingalpha.com':       'seekingalpha',
     'koyfin.com':             'koyfin',
     'finviz.com':             'finviz'

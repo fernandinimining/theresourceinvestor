@@ -186,8 +186,7 @@
         <div class="footer-col">
           <h5>Tools</h5>
           <a href="articles/best-stock-screeners.html">Stock Screeners</a>
-          <a href="https://www.interactivebrokers.com" target="_blank" rel="noopener sponsored">Interactive Brokers</a>
-          <a href="https://www.tradingview.com" target="_blank" rel="noopener sponsored">TradingView</a>
+          <a href="https://www.tradingview.com/?aff_id=165309" target="_blank" rel="noopener sponsored">TradingView</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
@@ -204,17 +203,13 @@
     </div>
   </footer>
 
-  <script src="https://js.stripe.com/v3/"></script>
   <script src="js/stocks-data.js"></script>
   <script src="js/sensitivity.js"></script>
   <script src="js/main-v2.js"></script>
   <script>
   (function() {
-    var STRIPE_PK = 'pk_live_51TIryzDYxvNGV3FirEWtwgFvPZMgXPPMN6lGe0gxu3e1KNr1QFKRBzcw0ni6yx39dMx2UhHsjTFszwrAK2cWUZgP00ew1cLVLe';
-    var PRICE_ID  = 'price_1TIttgDYxvNGV3Fitc6ocYQK';
+    var PAYMENT_LINK = 'https://buy.stripe.com/4gM5kD4qG4Ag0BN1dw0gw00';
     var PORTAL_URL = 'https://billing.stripe.com/p/login/4gM5kD4qG4Ag0BN1dw0gw00';
-
-    var stripe = Stripe(STRIPE_PK);
 
     var isPrem = (function() {
       try { var p = JSON.parse(localStorage.getItem('ri_premium') || '{}'); return p.active && p.expires && new Date(p.expires) > new Date(); } catch(e) { return false; }
@@ -228,18 +223,20 @@
       if (manageLink) manageLink.style.display = 'block';
     }
 
-    document.querySelectorAll('#stripe-checkout-btn, .stripe-checkout-trigger').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', function(e) {
         e.preventDefault();
         if (isPrem) return;
-        stripe.redirectToCheckout({
-          lineItems: [{ price: PRICE_ID, quantity: 1 }],
-          mode: 'subscription',
-          successUrl: window.location.origin + window.location.pathname.replace('premium.html', 'premium-success.html') + '?session_id={CHECKOUT_SESSION_ID}',
-          cancelUrl: window.location.href
-        }).then(function(result) {
-          if (result.error) alert(result.error.message);
-        });
+        window.location.href = PAYMENT_LINK;
+      });
+    }
+
+    document.querySelectorAll('.premium-cta-btn:not(#stripe-checkout-btn)').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        if (btn.getAttribute('href') === 'premium.html' || btn.getAttribute('href') === '#') {
+          e.preventDefault();
+          window.location.href = PAYMENT_LINK;
+        }
       });
     });
   })();
