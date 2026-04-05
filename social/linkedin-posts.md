@@ -1,7 +1,7 @@
 # The Resource Investor — LinkedIn Post Drafts
 
 **Audience:** Portfolio managers, research analysts, institutional allocators  
-**Brand:** The Resource Investor — https://theresourceinvestor.io  
+**Brand:** The Resource Investor — https://globalminingintel.com  
 **Format:** Insight paragraph + 2–3 bullets + CTA link
 
 ---
@@ -14,7 +14,7 @@ Electrification is often framed as a technology or utility story, but the bindin
 - **Supply:** New mine supply is permission- and capital-intensive; deficits often express as price volatility before they express as new tonnes.  
 - **Equities:** Miner selection should stress-test sustaining capex, jurisdiction, and balance-sheet flexibility—not just spot copper beta.
 
-**CTA:** Read our copper framework and screening notes on The Resource Investor: https://theresourceinvestor.io
+**CTA:** Read our copper framework and screening notes on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -26,7 +26,7 @@ A rising gold price lifts sentiment, but it does not automatically lift per-shar
 - **Valuation:** Cross-check EV/oz reserves and EV/EBITDA against peers under consistent price decks—cheap on spot can be expensive on life-of-mine.  
 - **Risk:** Hedging and financing can cap upside or dilute per-share economics just when macro tailwinds appear strongest.
 
-**CTA:** Explore valuation comparisons and data-driven miner screens: https://theresourceinvestor.io
+**CTA:** Explore valuation comparisons and data-driven miner screens: https://globalminingintel.com
 
 ---
 
@@ -38,7 +38,7 @@ Income-oriented mandates often gravitate toward dividend-paying equities, but mi
 - **Quality of cash:** Distinguish dividends funded by operating cash flow versus balance-sheet flexibility under maintenance capex loads.  
 - **Relative value:** Compare yields to broad equities as a starting point, then explicitly price commodity cyclicality and tail risks.
 
-**CTA:** See our dividend-focused mining commentary and screens on The Resource Investor: https://theresourceinvestor.io
+**CTA:** See our dividend-focused mining commentary and screens on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -50,7 +50,7 @@ After a period of rapid price appreciation and subsequent normalization, lithium
 - **Supply:** High-cost tonnes exit first; survivors often have integrated offtake, stronger liquidity, or superior resource quality.  
 - **Equities:** Dilution and funding overhangs can cap recoveries even when chemical prices stabilize—focus on per-share economics.
 
-**CTA:** Follow our lithium cycle roadmap and recovery checklist: https://theresourceinvestor.io
+**CTA:** Follow our lithium cycle roadmap and recovery checklist: https://globalminingintel.com
 
 ---
 
@@ -62,7 +62,7 @@ Silver occupies an unusual niche: it behaves like a precious metal in portfolios
 - **Supply complexity:** By-product silver supply means the metal’s marginal economics are not always captured by “primary silver” narratives.  
 - **Risk/reward:** Volatility is structural; portfolios should define explicit limits and rebalance rules.
 
-**CTA:** Read our silver demand synthesis and equity angles on The Resource Investor: https://theresourceinvestor.io
+**CTA:** Read our silver demand synthesis and equity angles on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -74,7 +74,7 @@ Commodity equities punish generic factor models because the relevant risks—jur
 - **Stress tests:** Model downside cases for costs, FX, and sustaining capex—especially for single-asset stories.  
 - **Catalyst mapping:** Tie position sizing to identifiable operational and corporate events, not only macro narratives.
 
-**CTA:** Review our screening framework and tool-driven workflows: https://theresourceinvestor.io
+**CTA:** Review our screening framework and tool-driven workflows: https://globalminingintel.com
 
 ---
 
@@ -86,7 +86,7 @@ Commodity equities combine equity risk with embedded derivative-like exposure to
 - **Liquidity:** Stressed markets widen spreads; position sizes should reflect exit constraints.  
 - **Scenario discipline:** Pre-commit to rebalancing rules when volatility spikes—before emotions dominate decisions.
 
-**CTA:** See practical risk frameworks aligned with mining portfolios on The Resource Investor: https://theresourceinvestor.io
+**CTA:** See practical risk frameworks aligned with mining portfolios on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -98,7 +98,7 @@ Emerging markets can offer some of the world’s highest-quality ore bodies, but
 - **Operational complexity:** Power, water, and transport bottlenecks frequently determine realized throughput.  
 - **ESG integration:** Community license-to-operate and safety performance can become balance-sheet issues when they fail.
 
-**CTA:** Read regional risk primers and case studies on The Resource Investor: https://theresourceinvestor.io
+**CTA:** Read regional risk primers and case studies on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -110,7 +110,7 @@ ESG in mining is not a branding exercise; it is a proxy for operational resilien
 - **Carbon intensity:** Energy sources and haul profiles affect costs and long-term regulatory exposure.  
 - **Social license:** Conflict risk can halt cash flows even when commodity prices cooperate.
 
-**CTA:** Explore ESG diligence checklists for mining equities on The Resource Investor: https://theresourceinvestor.io
+**CTA:** Explore ESG diligence checklists for mining equities on The Resource Investor: https://globalminingintel.com
 
 ---
 
@@ -122,7 +122,7 @@ We are launching a premium sensitivity module on The Resource Investor designed 
 - **Portfolio hygiene:** Compare miners on a like-for-like basis rather than mixing inconsistent street decks.  
 - **Decision support:** Use outputs to set entry ranges, hedging triggers, and rebalance thresholds.
 
-**CTA:** Request access and view feature details on The Resource Investor: https://theresourceinvestor.io
+**CTA:** Request access and view feature details on The Resource Investor: https://globalminingintel.com
 
 ---
 

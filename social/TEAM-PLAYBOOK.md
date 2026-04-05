@@ -22,7 +22,7 @@ Become the world's go-to independent platform for mining stock analysis, with a 
 - Bio: "Independent copper & gold mining intelligence. 20+ global miners analyzed. Premium sensitivity tools. By mining investors, for mining investors."
 - Banner: Dark gradient with copper/gold color scheme, tagline "Worldwide Mining Stock Intelligence"
 - Pinned tweet: Launch thread introducing the platform
-- Link: theresourceinvestor.io
+- Link: globalminingintel.com
 
 ### 2. LinkedIn Content Lead
 **Cadence**: 2 posts/week
@@ -75,7 +75,7 @@ Become the world's go-to independent platform for mining stock analysis, with a 
 2. Company name: The Resource Investor
 3. Industry: Mining & Metals
 4. Description: "Independent research platform covering 20+ worldwide mining stocks. Copper & gold specialists. Premium sensitivity analysis tools."
-5. Website: theresourceinvestor.io
+5. Website: globalminingintel.com
 
 ### YouTube
 1. Go to youtube.com (sign in with Gmail)

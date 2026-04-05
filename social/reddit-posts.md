@@ -1,6 +1,6 @@
 # Reddit-ready posts — The Resource Investor
 
-*Analysis posts for theresourceinvestor.io — each is self-contained; site mention only at the end.*
+*Analysis posts for globalminingintel.com — each is self-contained; site mention only at the end.*
 
 ---
 
@@ -28,7 +28,7 @@ When you chain falling grades, long project timelines, and overlapping demand dr
 **Takeaway**  
 Copper isn’t just a “China story” or a “recession trade.” It’s a cost-curve and time-to-market story. The risk isn’t only that price spikes; it’s that the next wave of projects arrives late, leaving periods where only price can ration demand.
 
-I write more about this at theresourceinvestor.io.
+I write more about this at globalminingintel.com.
 
 ---
 
@@ -66,7 +66,7 @@ EV/EBITDA is a market multiple on trailing or forward EBITDA—use the same basi
 **How I use this**  
 I don’t pick one metric in isolation. EV/EBITDA tells you what you pay for cash generation; AISC tells you how fragile that cash is if gold mean-reverts. The best setups often pair reasonable AISC with a multiple that already reflects a fear that may be overstated—or a credible path to lower costs via throughput or grade.
 
-I write more about this at theresourceinvestor.io.
+I write more about this at globalminingintel.com.
 
 ---
 
@@ -91,7 +91,7 @@ I look for: net cash or manageable debt; projects in jurisdictions where permits
 **Risk check**  
 Policy shifts, Chinese supply response, and tech substitution (LFP, sodium-ion narratives) can all change the slope of demand. This isn’t a morality play—it’s a cycle with a messy bottom.
 
-I write more about this at theresourceinvestor.io.
+I write more about this at globalminingintel.com.
 
 ---
 
@@ -124,7 +124,7 @@ Yield is usually modest versus bulk miners; the bet is more on gold margin and o
 **Bottom line**  
 Treat mining dividends as **variable coupons** on commodity exposure. Size them smaller than utilities or staples in a pure income portfolio unless you actively want that cyclicality.
 
-I write more about this at theresourceinvestor.io.
+I write more about this at globalminingintel.com.
 
 ---
 
@@ -155,4 +155,4 @@ I cross-check directional claims with **industry demand breakdowns** (solar/elec
 **Takeaway**  
 If you’re analyzing silver, split the thesis: **monetary beta to gold** plus **incremental industrial stacks** (PV, electronics, EV content) plus **inelastic byproduct supply**. That triad is where the interesting stress points show up.
 
-I write more about this at theresourceinvestor.io.
+I write more about this at globalminingintel.com.

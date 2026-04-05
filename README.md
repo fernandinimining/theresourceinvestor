@@ -20,7 +20,7 @@ git push -u origin main
 
 Then go to **Settings > Pages** in your GitHub repo, select `main` branch, root `/`, and click Save. Your site will be live at `https://YOUR_USERNAME.github.io/theresourceinvestor/`.
 
-**Custom domain:** Add a `CNAME` file with your domain (e.g., `theresourceinvestor.com`) and configure DNS (A records pointing to GitHub's IPs: `185.199.108-111.153`).
+**Custom domain:** Add a `CNAME` file with your domain (e.g., `globalminingintel.com`) and configure DNS (A records pointing to GitHub's IPs: `185.199.108-111.153`).
 
 ### Option B: Vercel (Free)
 
@@ -126,7 +126,7 @@ All affiliate links use `data-affiliate` attributes for tracking. Search for pla
 ### Month 1-3 Action Plan
 
 1. **Deploy site** to GitHub Pages or Vercel
-2. **Register domain** (suggested: `theresourceinvestor.com` or similar)
+2. **Register domain** (suggested: `globalminingintel.com` or similar)
 3. **Set up Google Search Console** — submit sitemap.xml
 4. **Set up Google Analytics 4** — uncomment GA snippet in index.html, add to all pages
 5. **Join affiliate programs** — IBKR, TradingView, Webull, Seeking Alpha

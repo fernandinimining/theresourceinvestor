@@ -2,7 +2,7 @@
 
 **Brand:** The Resource Investor — mining & commodity stock analysis  
 **Contact:** theresourceinvestorcu@gmail.com  
-**Site:** https://theresourceinvestor.io  
+**Site:** https://globalminingintel.com  
 **Suggested handles:** @ResourceInvstr · @ResInvestor · @MiningInvestor  
 
 *Note: Your project policy preserves existing files; this is the full library as a **new** file. If you already use `x-content-library.md`, copy this content there manually or replace that file outside the automated workflow.*
@@ -15,7 +15,7 @@
 **The Resource Investor**
 
 ### Bio (≤160 characters) — ready to paste
-Independent copper & gold mining analysis. 20+ global miners. Supply/demand data. Premium sensitivity tools. Not financial advice. theresourceinvestor.io
+Independent copper & gold mining analysis. 20+ global miners. Supply/demand data. Premium sensitivity tools. Not financial advice. globalminingintel.com
 
 *(159 characters including spaces)*
 
@@ -28,7 +28,7 @@ Independent copper & gold mining analysis. 20+ global miners. Supply/demand data
 ### Pinned tweet suggestion
 Copper & gold are rewriting the cost curve for the energy transition and for sovereign balance sheets.  
 We track 20+ miners with supply/demand context—not hype.  
-Sensitivity tools + data-first notes → https://theresourceinvestor.io  
+Sensitivity tools + data-first notes → https://globalminingintel.com  
 Not financial advice. #Copper #Gold #Mining
 
 ---
@@ -43,7 +43,7 @@ Not financial advice. #Copper #Gold #Mining
 | **1 (Mon)** | Hook: “Why we built The Resource Investor” + link | Data bite: copper intensity EV vs ICE | Poll: What matters more for miners in 2026—grade or jurisdiction? |
 | **2 (Tue)** | Gold: central bank demand theme (factual framing) | Chart-style insight: real yields vs gold (concept) | Quote insight from your gold valuation framework (teaser) |
 | **3 (Wed)** | Copper deficit / capex thread (Tweet 1) | Thread continuation (reply) | Thread wrap + CTA to site |
-| **4 (Thu)** | “Miner of the day” (copper or gold producer—facts only) | Engagement: “What’s your biggest mining DD mistake?” | Link: relevant article on theresourceinvestor.io |
+| **4 (Thu)** | “Miner of the day” (copper or gold producer—facts only) | Engagement: “What’s your biggest mining DD mistake?” | Link: relevant article on globalminingintel.com |
 | **5 (Fri)** | Week recap: 3 bullets copper, 3 bullets gold | Hot take (labeled opinion): copper as strategic metal | Promotional: premium tools / newsletter CTA (no hype) |
 | **6 (Sat)** | Educational: how to read AISC vs by-product credits | Lighter: silver industrial vs monetary (bridge topic) | Community Q: favorite annual report section? |
 | **7 (Sun)** | Long-form thread starter: gold $3,200 piece | Thread mid (data tweets) | Thread end + link |
@@ -98,10 +98,10 @@ Not financial advice. #Copper #Gold #Mining
 
 ### D. Promotional (4)
 
-1. We map copper & gold miners with supply/demand context—not hype. Start here: https://theresourceinvestor.io #Copper #Gold  
-2. Premium sensitivity tools + data-first notes on 20+ names. Explore the hub: https://theresourceinvestor.io #Mining  
-3. New deep dive on copper’s structural story—evidence, not slogans: https://theresourceinvestor.io #Copper #Commodities  
-4. Gold framework piece—central banks, real yields, valuation: https://theresourceinvestor.io #Gold (Not financial advice.)  
+1. We map copper & gold miners with supply/demand context—not hype. Start here: https://globalminingintel.com #Copper #Gold  
+2. Premium sensitivity tools + data-first notes on 20+ names. Explore the hub: https://globalminingintel.com #Mining  
+3. New deep dive on copper’s structural story—evidence, not slogans: https://globalminingintel.com #Copper #Commodities  
+4. Gold framework piece—central banks, real yields, valuation: https://globalminingintel.com #Gold (Not financial advice.)  
 
 ---
 
@@ -123,7 +123,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **6/7** Mine-by-mine work beats ticker chasing: recovery, power, by-products (moly, silver), and sustaining capex decide who keeps margin when costs rise.  
 
-**7/7** Full article—evidence, charts, and a clear framework: https://theresourceinvestor.io (add your article path). Follow for more copper research. #Copper  
+**7/7** Full article—evidence, charts, and a clear framework: https://globalminingintel.com (add your article path). Follow for more copper research. #Copper  
 
 ---
 
@@ -143,7 +143,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **7/8** Use scenarios, not prophecies: model gold at a band, stress FX and costs, then ask which miners survive the downside.  
 
-**8/8** Read the full valuation + scenario note: https://theresourceinvestor.io (article path). #Gold #Mining  
+**8/8** Read the full valuation + scenario note: https://globalminingintel.com (article path). #Gold #Mining  
 
 ---
 
@@ -161,7 +161,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **6/7** Recovery isn’t “back to 2022”—it’s a slower demand slope with supply rationalization. Map survivors by cost quartile.  
 
-**7/7** Full cost-curve breakdown: https://theresourceinvestor.io (article path). #Lithium #Mining  
+**7/7** Full cost-curve breakdown: https://globalminingintel.com (article path). #Lithium #Mining  
 
 ---
 
@@ -181,7 +181,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **7/7** Watch red flags: repeated misses, capex overruns, and guidance cuts—filings won’t save bad operations.  
 
-**8/8** Full article on institutional patterns + checklist: https://theresourceinvestor.io (article path). #Mining #Commodities  
+**8/8** Full article on institutional patterns + checklist: https://globalminingintel.com (article path). #Mining #Commodities  
 
 ---
 
@@ -199,7 +199,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **6/7** Stock pickers: separate “silver price beta” from “actual silver revenue share”—they’re not the same.  
 
-**7/7** Deep dive on solar + silver balance: https://theresourceinvestor.io (article path). #Silver #Mining  
+**7/7** Deep dive on solar + silver balance: https://globalminingintel.com (article path). #Silver #Mining  
 
 ---
 
@@ -219,7 +219,7 @@ Not financial advice. #Copper #Gold #Mining
 
 **7/7** Jurisdiction and political risk can erase dividends overnight—boards cut fast when leverage rises.  
 
-**8/8** Yield comparison + total return framework: https://theresourceinvestor.io (article path). #Gold #Copper #Mining  
+**8/8** Yield comparison + total return framework: https://globalminingintel.com (article path). #Gold #Copper #Mining  
 
 ---
 

@@ -1,6 +1,6 @@
 # The Resource Investor — X (Twitter) Content Library
 
-**Brand:** The Resource Investor | **Site:** https://theresourceinvestor.io
+**Brand:** The Resource Investor | **Site:** https://globalminingintel.com
 
 ---
 
@@ -18,7 +18,7 @@ Mining stocks, metals & global miners. Data-driven analysis of copper, gold, lit
 Use a clean, institutional-style visual: dark navy or charcoal background, subtle topographic or circuit-grid texture, and a thin accent line in copper or gold. Headline: **“Mining. Metals. Margin of safety.”** Subhead: **“Stock screens & analysis for resource investors”** + small logo lockup for The Resource Investor. Avoid cluttered charts; reserve the banner for brand clarity and credibility.
 
 ### Pinned tweet suggestion
-**Pin:** A thread teaser that promises a repeatable framework (e.g., “How we screen miners before earnings”) + one standout stat + link to your flagship methodology piece on theresourceinvestor.io. Refresh quarterly when you publish a major guide or tool.
+**Pin:** A thread teaser that promises a repeatable framework (e.g., “How we screen miners before earnings”) + one standout stat + link to your flagship methodology piece on globalminingintel.com. Refresh quarterly when you publish a major guide or tool.
 
 ---
 
@@ -96,13 +96,13 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 ### Promotional (4+)
 
-1. New deep dive: how we screen copper majors before the next supply report—framework + data tables. Read on The Resource Investor: https://theresourceinvestor.io
+1. New deep dive: how we screen copper majors before the next supply report—framework + data tables. Read on The Resource Investor: https://globalminingintel.com
 
-2. Premium teaser: sensitivity tables that stress-test EBITDA against metal price decks—built for investors tired of spreadsheet chaos. Explore tools: https://theresourceinvestor.io
+2. Premium teaser: sensitivity tables that stress-test EBITDA against metal price decks—built for investors tired of spreadsheet chaos. Explore tools: https://globalminingintel.com
 
-3. Newsletter: weekly mining data cuts—macro metal context, 2–3 stock observations, no fluff. Join: https://theresourceinvestor.io *(add your actual signup path when live)*
+3. Newsletter: weekly mining data cuts—macro metal context, 2–3 stock observations, no fluff. Join: https://globalminingintel.com *(add your actual signup path when live)*
 
-4. Article drop: “Silver’s dual engine—monetary bid + industrial torque.” Hooks, charts, and the miners we’re watching. Full piece: https://theresourceinvestor.io
+4. Article drop: “Silver’s dual engine—monetary bid + industrial torque.” Hooks, charts, and the miners we’re watching. Full piece: https://globalminingintel.com
 
 ---
 
@@ -128,7 +128,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. The “new oil” framing is about **scarcity of timely supply**, not hype. The dataset to watch is **project pipelines**, not day-trader sentiment.
 
-**CTA:** Full framework + stock screens: “Copper is the New Oil” on The Resource Investor — https://theresourceinvestor.io/articles/copper-is-the-new-oil
+**CTA:** Full framework + stock screens: “Copper is the New Oil” on The Resource Investor — https://globalminingintel.com/articles/copper-is-the-new-oil
 
 ---
 
@@ -148,7 +148,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. Sentiment peaks invite dilution and M&A. Watch issuance—**share count is the silent thief** of per-share value.
 
-**CTA:** Read the full valuation map: “Gold at $3,200” — https://theresourceinvestor.io/articles/gold-at-3200
+**CTA:** Read the full valuation map: “Gold at $3,200” — https://globalminingintel.com/articles/gold-at-3200
 
 ---
 
@@ -168,7 +168,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. Use scenario tables: lithium price decks should stress **downside cash burn**, not only upside NPV.
 
-**CTA:** Full recovery roadmap: “Lithium Crash Recovery” — https://theresourceinvestor.io/articles/lithium-crash-recovery
+**CTA:** Full recovery roadmap: “Lithium Crash Recovery” — https://globalminingintel.com/articles/lithium-crash-recovery
 
 ---
 
@@ -188,7 +188,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. Combine fund data with **your** risk limits—copying without sizing discipline is a portfolio bug, not a feature.
 
-**CTA:** Names, charts, and caveats: “Hedge Fund Mining Picks” — https://theresourceinvestor.io/articles/hedge-fund-mining-picks
+**CTA:** Names, charts, and caveats: “Hedge Fund Mining Picks” — https://globalminingintel.com/articles/hedge-fund-mining-picks
 
 ---
 
@@ -208,7 +208,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. Volatility is structural—**position sizing** is your edge when the metal doubles the fun and the pain.
 
-**CTA:** Data pack + equity angles: “Silver Solar Boom” — https://theresourceinvestor.io/articles/silver-solar-boom
+**CTA:** Data pack + equity angles: “Silver Solar Boom” — https://globalminingintel.com/articles/silver-solar-boom
 
 ---
 
@@ -228,7 +228,7 @@ Use a clean, institutional-style visual: dark navy or charcoal background, subtl
 
 6. Screen for names that maintained or grew distributions **after** prior downturns—that’s the aristocrat smell test in resources.
 
-**CTA:** Full screen + watchlist: “Mining Dividend Aristocrats” — https://theresourceinvestor.io/articles/mining-dividend-aristocrats
+**CTA:** Full screen + watchlist: “Mining Dividend Aristocrats” — https://globalminingintel.com/articles/mining-dividend-aristocrats
 
 ---
 

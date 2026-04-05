@@ -1,6 +1,6 @@
 # YouTube Shorts / TikTok scripts — The Resource Investor
 
-*theresourceinvestor.io — ~30–60s spoken; hook in first 3 seconds.*
+*globalminingintel.com — ~30–60s spoken; hook in first 3 seconds.*
 
 ---
 
@@ -16,7 +16,7 @@ Oil rationed miles. Copper rationed **tons of wire**, transformers, and motors. 
 Split screen: left, EV charging + cable close-up; right, simple line chart labeled “copper demand drivers” with icons (EV, solar, grid). Text overlay: **“10–15 yr mine timelines”**.
 
 **CTA:**  
-“Follow for mining math that actually matters—link in bio: theresourceinvestor.io.”
+“Follow for mining math that actually matters—link in bio: globalminingintel.com.”
 
 ---
 
@@ -32,7 +32,7 @@ VALE is a **low-cost iron ore** producer when the market pays up for ore. That c
 Show VALE ticker with **yield 6.8%** text overlay; cut to simple bar: “Iron ore price sensitivity.” Flash warning icon on words **cyclical**, **not fixed income**. One-line payout vs FCF chart (illustrative).
 
 **CTA:**  
-“Deep dives on miners and dividends at theresourceinvestor.io—link in bio.”
+“Deep dives on miners and dividends at globalminingintel.com—link in bio.”
 
 ---
 
@@ -48,7 +48,7 @@ Gold doesn’t have cash flows—so ‘overvalued’ is really **real yields and
 Gold price headline **$3,200** full-screen; quick cut to 2-line chart: gold vs **real 10Y yield** (inverse relationship). Text overlay: **“Miners = operating leverage.”**
 
 **CTA:**  
-“More frameworks for gold and miners at theresourceinvestor.io.”
+“More frameworks for gold and miners at globalminingintel.com.”
 
 ---
 
@@ -64,7 +64,7 @@ Gold price headline **$3,200** full-screen; quick cut to 2-line chart: gold vs *
 Ticker **BTG** + **~4.2x EV/EBITDA** bold text; flash peer table (3–4 names) with BTG highlighted. Map pin on key asset (e.g., Mali/Namibia—use actual B2Gold ops). Disclaimer text: **“Not financial advice.”**
 
 **CTA:**  
-“Peer comps and miner checklists at theresourceinvestor.io.”
+“Peer comps and miner checklists at globalminingintel.com.”
 
 ---
 
@@ -80,7 +80,7 @@ Solar panels use **silver paste** in cells—grams per panel times **hundreds of
 Drone shot of solar farm; zoom to panel texture; overlay **“10–20g+ Ag / panel (varies by tech)”**; simple equation animation: **GW installed × g/panel → ounces**.
 
 **CTA:**  
-“Commodity math broken down at theresourceinvestor.io.”
+“Commodity math broken down at globalminingintel.com.”
 
 ---
 
@@ -96,7 +96,7 @@ Filings don’t predict next month, but they show **conviction sizing**. Funds o
 Fast montage: logos tickers **FCX, GOLD/NEM, RIO**; overlay “13F / institutional” stamp; show **one** simplified bar: “size of position vs index weight” (illustrative). Blur disclaimer: **“Past buying ≠ recommendation.”**
 
 **CTA:**  
-“How I read miner positioning—theresourceinvestor.io.”
+“How I read miner positioning—globalminingintel.com.”
 
 ---
 
@@ -112,7 +112,7 @@ Lithium spot collapsed from bubble highs—many producers got cut **in half, aga
 Dramatic lithium spot price line **peak → trough**; split: **“Survivors”** vs **“Stranded projects”**; icons: battery, mine, balance sheet checkmark.
 
 **CTA:**  
-“Survivor frameworks for commodity stocks—theresourceinvestor.io.”
+“Survivor frameworks for commodity stocks—globalminingintel.com.”
 
 ---
 
@@ -128,7 +128,7 @@ Dramatic lithium spot price line **peak → trough**; split: **“Survivors”**
 SCCO logo; animated timeline **2026 → 2080+**; copper cathode sheets; text **“Mine life ≠ stock safety—copper price matters.”**
 
 **CTA:**  
-“Copper stock teardowns at theresourceinvestor.io.”
+“Copper stock teardowns at globalminingintel.com.”
 
 ---
 
@@ -144,7 +144,7 @@ Big miners often pay **high variable dividends**—they’re a **coupon on iron 
 Two-column graphic: **Mining** (pickaxe icon, **high yield, volatile**); **Tech** (cloud icon, **lower yield, steadier**). Animated swap of **“commodity cycle”** dial.
 
 **CTA:**  
-“Yield analysis for resource stocks—theresourceinvestor.io.”
+“Yield analysis for resource stocks—globalminingintel.com.”
 
 ---
 
@@ -160,7 +160,7 @@ Plot **new mine supply** against **demand**—then add a third line: **years to 
 Single animated chart: **demand line up**, **new supply line shallow**, **“project sanction → first metal: ~10–15 yrs”** bracket. Copper price tiny in corner reacting.
 
 **CTA:**  
-“More single-chart explainers at theresourceinvestor.io.”
+“More single-chart explainers at globalminingintel.com.”
 
 ---
 
