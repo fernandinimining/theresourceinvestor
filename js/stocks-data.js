@@ -2,6 +2,7 @@
  * stocks-data.js — Public financial data for worldwide mining stocks
  * All data sourced from latest public annual reports, 10-K, 20-F filings.
  * Figures are approximate and for illustrative/educational purposes only.
+ * EV/EBITDA multiples derived from: (market_cap + net_debt) / EBITDA
  * Last updated: April 2026
  */
 var STOCKS_DATA = [
@@ -11,7 +12,7 @@ var STOCKS_DATA = [
     country: "US/Indonesia/Peru", region: "Americas/Asia",
     category: "copper", tags: ["copper","gold","molybdenum"],
     description: "World's largest publicly traded copper producer. Operates Grasberg (Indonesia), Cerro Verde (Peru), and Morenci (US).",
-    market_cap_b: 67, ev_ebitda: 7.2, div_yield: 1.4, pe_ratio: 14,
+    market_cap_b: 67, ev_ebitda: 6.7, div_yield: 1.4, pe_ratio: 14,
     metals: {
       copper: { production_mlbs: 4100, aisc_per_lb: 1.58, pct_revenue: 0.78 },
       gold:   { production_koz: 1800, aisc_per_oz: 950, pct_revenue: 0.14 },
@@ -31,7 +32,7 @@ var STOCKS_DATA = [
     country: "Mexico/Peru", region: "Americas",
     category: "copper", tags: ["copper","molybdenum","zinc","silver"],
     description: "One of the world's lowest-cost copper producers with massive reserves in Mexico and Peru. Controlled by Grupo Mexico.",
-    market_cap_b: 85, ev_ebitda: 14.5, div_yield: 3.2, pe_ratio: 22,
+    market_cap_b: 85, ev_ebitda: 15.2, div_yield: 3.2, pe_ratio: 22,
     metals: {
       copper: { production_mlbs: 2150, aisc_per_lb: 1.22, pct_revenue: 0.80 },
       molybdenum: { production_mlbs: 60, aisc_per_lb: 7.80, pct_revenue: 0.08 },
@@ -52,7 +53,7 @@ var STOCKS_DATA = [
     country: "Canada/Chile/Peru", region: "Americas",
     category: "copper", tags: ["copper","zinc","steelmaking coal"],
     description: "Canadian miner pivoting to copper growth. QB2 in Chile ramping. Diversified base metals plus steelmaking coal.",
-    market_cap_b: 24, ev_ebitda: 5.4, div_yield: 0.9, pe_ratio: 10,
+    market_cap_b: 24, ev_ebitda: 5.7, div_yield: 0.9, pe_ratio: 10,
     metals: {
       copper: { production_mlbs: 890, aisc_per_lb: 1.72, pct_revenue: 0.45 },
       zinc: { production_mlbs: 540, aisc_per_lb: 0.52, pct_revenue: 0.12 }
@@ -71,7 +72,7 @@ var STOCKS_DATA = [
     country: "Canada/Peru", region: "Americas",
     category: "copper", tags: ["copper","zinc","gold","silver"],
     description: "Mid-cap copper-zinc producer with Constancia (Peru), Snow Lake (Canada), and Copper World (Arizona) pipeline.",
-    market_cap_b: 5.2, ev_ebitda: 4.8, div_yield: 0.4, pe_ratio: 11,
+    market_cap_b: 5.2, ev_ebitda: 6.9, div_yield: 0.4, pe_ratio: 11,
     metals: {
       copper: { production_mlbs: 290, aisc_per_lb: 1.45, pct_revenue: 0.62 },
       zinc: { production_mlbs: 160, aisc_per_lb: 0.48, pct_revenue: 0.12 },
@@ -93,7 +94,7 @@ var STOCKS_DATA = [
     country: "US/Canada/DRC/Mali/Tanzania", region: "Global",
     category: "gold", tags: ["gold","copper"],
     description: "Second-largest gold miner globally. Tier One assets across Nevada (JV with Newmont), Africa, and growing copper at Reko Diq.",
-    market_cap_b: 38, ev_ebitda: 6.8, div_yield: 2.1, pe_ratio: 15,
+    market_cap_b: 38, ev_ebitda: 6.6, div_yield: 2.1, pe_ratio: 15,
     metals: {
       gold: { production_koz: 3900, aisc_per_oz: 1050, pct_revenue: 0.82 },
       copper: { production_mlbs: 420, aisc_per_lb: 1.85, pct_revenue: 0.18 }
@@ -112,7 +113,7 @@ var STOCKS_DATA = [
     country: "US/Canada/Australia/Ghana/Peru/Argentina", region: "Global",
     category: "gold", tags: ["gold","silver","copper","zinc"],
     description: "World's largest gold producer following Newcrest acquisition. 12+ operations across 5 continents.",
-    market_cap_b: 55, ev_ebitda: 8.1, div_yield: 2.8, pe_ratio: 18,
+    market_cap_b: 55, ev_ebitda: 8.6, div_yield: 2.8, pe_ratio: 18,
     metals: {
       gold: { production_koz: 6800, aisc_per_oz: 1150, pct_revenue: 0.88 },
       silver: { production_koz: 28000, aisc_per_oz: 14.0, pct_revenue: 0.05 },
@@ -132,7 +133,7 @@ var STOCKS_DATA = [
     country: "Canada/Australia/Mexico/Finland", region: "Americas/Europe",
     category: "gold", tags: ["gold","silver"],
     description: "Senior gold producer with operations exclusively in tier-one jurisdictions (Canada, Australia, Mexico, Finland).",
-    market_cap_b: 48, ev_ebitda: 9.5, div_yield: 1.6, pe_ratio: 20,
+    market_cap_b: 48, ev_ebitda: 11.0, div_yield: 1.6, pe_ratio: 20,
     metals: {
       gold: { production_koz: 3500, aisc_per_oz: 1020, pct_revenue: 0.96 },
       silver: { production_koz: 3200, aisc_per_oz: 13.0, pct_revenue: 0.04 }
@@ -151,7 +152,7 @@ var STOCKS_DATA = [
     country: "US/Canada/Brazil/Chile/Mauritania", region: "Americas/Africa",
     category: "gold", tags: ["gold","silver"],
     description: "Mid-tier gold producer focused on the Americas. Great Bear project in Ontario is key growth catalyst.",
-    market_cap_b: 15, ev_ebitda: 5.8, div_yield: 1.3, pe_ratio: 12,
+    market_cap_b: 15, ev_ebitda: 6.1, div_yield: 1.3, pe_ratio: 12,
     metals: {
       gold: { production_koz: 2100, aisc_per_oz: 1080, pct_revenue: 0.97 },
       silver: { production_koz: 5500, aisc_per_oz: 13.5, pct_revenue: 0.03 }
@@ -170,7 +171,7 @@ var STOCKS_DATA = [
     country: "Canada/Mali/Philippines/Namibia", region: "Global",
     category: "gold", tags: ["gold"],
     description: "Low-cost intermediate gold producer. Fekola mine in Mali is flagship. Back River in Nunavut ramping up.",
-    market_cap_b: 6.5, ev_ebitda: 4.2, div_yield: 3.8, pe_ratio: 9,
+    market_cap_b: 6.5, ev_ebitda: 6.5, div_yield: 3.8, pe_ratio: 9,
     metals: {
       gold: { production_koz: 900, aisc_per_oz: 980, pct_revenue: 0.99 }
     },
@@ -188,7 +189,7 @@ var STOCKS_DATA = [
     country: "South Africa/Ghana/Australia/Peru/Chile", region: "Global",
     category: "gold", tags: ["gold","copper"],
     description: "South African-headquartered gold major with operations across 4 continents. Salares Norte in Chile is new growth asset.",
-    market_cap_b: 17, ev_ebitda: 6.0, div_yield: 2.5, pe_ratio: 13,
+    market_cap_b: 17, ev_ebitda: 7.3, div_yield: 2.5, pe_ratio: 13,
     metals: {
       gold: { production_koz: 2300, aisc_per_oz: 1100, pct_revenue: 0.94 },
       copper: { production_mlbs: 60, aisc_per_lb: 2.00, pct_revenue: 0.06 }
@@ -207,7 +208,7 @@ var STOCKS_DATA = [
     country: "US/Ghana/Tanzania/Australia/Brazil/Guinea", region: "Global",
     category: "gold", tags: ["gold"],
     description: "Global gold major redomiciled to US. Nine operations across Africa, Americas, and Australia. Nevada expansion underway.",
-    market_cap_b: 14, ev_ebitda: 5.5, div_yield: 1.8, pe_ratio: 11,
+    market_cap_b: 14, ev_ebitda: 5.7, div_yield: 1.8, pe_ratio: 11,
     metals: {
       gold: { production_koz: 2650, aisc_per_oz: 1140, pct_revenue: 0.98 }
     },
@@ -220,13 +221,35 @@ var STOCKS_DATA = [
     reserves: { gold_moz: 32, mine_life_yrs: 12 },
     rating: "Buy", score: 7.5
   },
+  // ── GOLD / SILVER — PERU ──
+  {
+    ticker: "BVN", name: "Buenaventura", exchange: "NYSE",
+    country: "Peru", region: "Americas",
+    category: "gold", tags: ["gold","silver","copper","zinc"],
+    description: "Peru's largest publicly listed precious metals company. Operates 6 direct mines plus equity stakes in Yanacocha (43.65%, NEM JV) and Cerro Verde (19.58%, FCX JV). San Gabriel copper-gold project in development.",
+    market_cap_b: 9.7, ev_ebitda: 15.6, div_yield: 3.4, pe_ratio: 23,
+    metals: {
+      gold: { production_koz: 280, aisc_per_oz: 1200, pct_revenue: 0.55 },
+      silver: { production_koz: 15000, aisc_per_oz: 16.0, pct_revenue: 0.30 },
+      copper: { production_mlbs: 25, aisc_per_lb: 2.10, pct_revenue: 0.08 },
+      zinc: { production_mlbs: 50, aisc_per_lb: 0.55, pct_revenue: 0.07 }
+    },
+    financials: {
+      revenue_m: 1155, ebitda_m: 630, net_income_m: 194,
+      operating_costs_m: 724, capex_m: 320,
+      cash_m: 478, net_debt_m: 148,
+      shares_m: 254, tax_rate: 0.30
+    },
+    reserves: { gold_moz: 6.5, silver_moz: 230, mine_life_yrs: 15 },
+    rating: "Buy", score: 7.5
+  },
   // ── SILVER ──
   {
     ticker: "PAAS", name: "Pan American Silver", exchange: "NYSE",
     country: "Canada/Mexico/Peru/Bolivia/Argentina/Brazil", region: "Americas",
     category: "silver", tags: ["silver","gold","copper","zinc"],
     description: "World's largest primary silver producer. 10 operations across Latin America. Also significant gold producer.",
-    market_cap_b: 10, ev_ebitda: 6.2, div_yield: 1.7, pe_ratio: 16,
+    market_cap_b: 10, ev_ebitda: 8.7, div_yield: 1.7, pe_ratio: 16,
     metals: {
       silver: { production_koz: 21000, aisc_per_oz: 15.50, pct_revenue: 0.40 },
       gold: { production_koz: 900, aisc_per_oz: 1050, pct_revenue: 0.48 },
@@ -247,7 +270,7 @@ var STOCKS_DATA = [
     country: "Canada/Mexico", region: "Americas",
     category: "silver", tags: ["silver","gold"],
     description: "Pure-play silver producer focused on Mexico. Three operating mines plus Jerritt Canyon gold in Nevada.",
-    market_cap_b: 3.2, ev_ebitda: 8.5, div_yield: 0.3, pe_ratio: 28,
+    market_cap_b: 3.2, ev_ebitda: 18.1, div_yield: 0.3, pe_ratio: 28,
     metals: {
       silver: { production_koz: 12000, aisc_per_oz: 18.50, pct_revenue: 0.55 },
       gold: { production_koz: 140, aisc_per_oz: 1250, pct_revenue: 0.45 }
@@ -267,7 +290,7 @@ var STOCKS_DATA = [
     country: "Australia/Chile/US/Canada/Brazil", region: "Global",
     category: "diversified", tags: ["copper","iron ore","coal","nickel","potash"],
     description: "World's largest mining company by market cap. Iron ore and copper are core. Major potash project (Jansen) under development.",
-    market_cap_b: 155, ev_ebitda: 6.0, div_yield: 5.2, pe_ratio: 12,
+    market_cap_b: 155, ev_ebitda: 5.7, div_yield: 5.2, pe_ratio: 12,
     metals: {
       copper: { production_mlbs: 3700, aisc_per_lb: 1.48, pct_revenue: 0.28 },
       iron_ore: { production_mt: 255, aisc_per_t: 18.5, pct_revenue: 0.48 }
@@ -286,7 +309,7 @@ var STOCKS_DATA = [
     country: "Australia/Canada/Mongolia/Guinea/US", region: "Global",
     category: "diversified", tags: ["iron ore","copper","aluminum","lithium"],
     description: "Second-largest miner globally. Iron ore dominates. Growing copper via Oyu Tolgoi (Mongolia) and lithium through Rincon.",
-    market_cap_b: 110, ev_ebitda: 5.2, div_yield: 5.8, pe_ratio: 10,
+    market_cap_b: 110, ev_ebitda: 4.7, div_yield: 5.8, pe_ratio: 10,
     metals: {
       copper: { production_mlbs: 1450, aisc_per_lb: 1.65, pct_revenue: 0.12 },
       iron_ore: { production_mt: 330, aisc_per_t: 21.0, pct_revenue: 0.58 },
@@ -306,7 +329,7 @@ var STOCKS_DATA = [
     country: "Brazil/Canada/Indonesia", region: "Americas/Asia",
     category: "diversified", tags: ["iron ore","nickel","copper"],
     description: "World's largest iron ore producer. Also major nickel producer. Based in Brazil with global operations.",
-    market_cap_b: 48, ev_ebitda: 4.5, div_yield: 6.8, pe_ratio: 7,
+    market_cap_b: 48, ev_ebitda: 3.6, div_yield: 6.8, pe_ratio: 7,
     metals: {
       iron_ore: { production_mt: 310, aisc_per_t: 22.0, pct_revenue: 0.78 },
       copper: { production_mlbs: 340, aisc_per_lb: 1.70, pct_revenue: 0.08 },
@@ -327,7 +350,7 @@ var STOCKS_DATA = [
     country: "US/Chile/Australia", region: "Americas/Australia",
     category: "lithium", tags: ["lithium","bromine"],
     description: "World's largest lithium producer. Operates brine in Chile (SQM JV region) and hard-rock in Australia (Greenbushes/Wodgina).",
-    market_cap_b: 12, ev_ebitda: 8.0, div_yield: 1.8, pe_ratio: 18,
+    market_cap_b: 12, ev_ebitda: 10.1, div_yield: 1.8, pe_ratio: 18,
     metals: {
       lithium: { production_kt_lce: 200, aisc_per_t: 8500, pct_revenue: 0.70 }
     },

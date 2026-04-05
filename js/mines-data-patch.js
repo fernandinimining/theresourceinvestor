@@ -96,9 +96,14 @@
       "Timmins":         { aisc_per_oz: 1501, cash_cost_per_oz: null },
       "Minera Florida":  { aisc_per_oz: 1501, cash_cost_per_oz: null }
     },
-    "AG": {
-      "La Encantada":    { aisc_per_oz_ag: 28.31 }
-    }
+         "AG": {
+             "La Encantada":    { aisc_per_oz_ag: 28.31 }
+           },
+           "BVN": {
+             "El Brocal (Colquijirca)": { aisc_per_lb_cu: 3.00, cash_cost_per_lb: 2.73 },
+             "Yanacocha (equity)":      { aisc_per_oz: 1196, cash_cost_per_oz: 1003 },
+             "Cerro Verde (equity)":    { cash_cost_per_lb: 2.63, net_cash_cost_per_lb: 2.46 }
+           }
   };
 
   Object.keys(COST_PATCHES).forEach(function (ticker) {
