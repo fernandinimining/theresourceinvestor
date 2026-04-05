@@ -98,7 +98,7 @@
             '<div class="premium-gate-icon">&#9733;</div>' +
             '<h3>Premium Sensitivity Analysis</h3>' +
             '<p>Adjust metal prices and see real-time impact on ' + stock.name + '\'s revenue, EBITDA, and per-share value.</p>' +
-            '<a href="premium.html" class="affiliate-btn" style="margin-top:12px;">Unlock Premium — $14.99/mo &rarr;</a>' +
+            '<a href="premium.html" class="affiliate-btn" style="margin-top:12px;">Unlock Premium — $29.99/mo &rarr;</a>' +
           '</div>' +
         '</div>';
       return;

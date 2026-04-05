@@ -57,8 +57,8 @@
     btn.addEventListener('click', function() {
       gtag('event', 'begin_checkout', {
         currency: 'USD',
-        value: 14.99,
-        items: [{ item_name: 'Premium Subscription', price: 14.99 }]
+        value: 29.99,
+        items: [{ item_name: 'Premium Subscription', price: 29.99 }]
       });
     });
   });
