@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mine-Level Analysis — Premium Terminal | The Resource Investor</title>
+  <meta name="description" content="Professional mine-by-mine AISC curves, reserves breakdown, and cross-company benchmarking for global miners. Premium intelligence for resource investors.">
+  <link rel="canonical" href="https://globalminingintel.com/mine-analysis.html">
+
+  <meta property="og:title" content="Mine-Level Analysis — Premium Terminal | The Resource Investor">
+  <meta property="og:description" content="Mine-level production, costs, reserves, and benchmarking across all covered producers. Built for analysts and portfolio managers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://globalminingintel.com/mine-analysis.html">
+  <meta property="og:image" content="https://globalminingintel.com/images/og-home.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mine-Level Analysis — The Resource Investor">
+  <meta name="twitter:description" content="Terminal-grade mine data: AISC curves, reserves, maps, and custom benchmarking.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/new-styles.css">
+
+  <style>
+    :root { --mine-header-bg:#0f172a; --mine-header-fg:#f8fafc; --mine-row-alt:rgba(37,99,235,.04); --mine-shadow:0 1px 3px rgba(15,23,42,.08); --mine-radius:12px; }
+    .mine-page-wrap { background:linear-gradient(180deg,var(--bg-secondary) 0%,var(--bg-primary) 48%); }
+    .mine-hero-bar { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.25rem; margin-bottom:1.5rem; }
+    .mine-badge-row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+    .mine-badge { font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.35rem .65rem; border-radius:999px; background:linear-gradient(135deg,var(--accent) 0%,#d97706 100%); color:#0f172a; box-shadow:var(--mine-shadow); }
+    .mine-badge-muted { background:var(--bg-secondary); color:var(--text-secondary); border:1px solid var(--border); }
+    .mine-selector-group { display:flex; flex-direction:column; gap:.35rem; min-width:min(100%,320px); }
+    .mine-selector-group label { font-size:.75rem; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.04em; }
+    .mine-select { font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.9rem; padding:.65rem .85rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-primary); color:var(--text-primary); cursor:pointer; transition:border-color .2s,box-shadow .2s; }
+    .mine-select:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.2); }
+    .mine-overview-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .mine-stat-card { background:var(--bg-primary); border:1px solid var(--border); border-radius:var(--mine-radius); padding:1rem 1.15rem; box-shadow:var(--mine-shadow); transition:transform .2s,box-shadow .2s; }
+    .mine-stat-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(15,23,42,.08); }
+    .mine-stat-label { font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-secondary); font-weight:600; margin-bottom:.35rem; }
+    .mine-stat-value { font-family:'JetBrains Mono',monospace; font-size:1.15rem; font-weight:600; color:var(--text-primary); }
+    .mine-panel { background:var(--bg-primary); border:1px solid var(--border); border-radius:var(--mine-radius); overflow:hidden; box-shadow:var(--mine-shadow); }
+    .mine-panel-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem; padding:.85rem 1.1rem; background:var(--mine-header-bg); color:var(--mine-header-fg); }
+    .mine-panel-header h3 { margin:0; font-size:1rem; font-weight:700; letter-spacing:-.02em; }
+    .mine-panel-header span { font-size:.75rem; opacity:.85; font-family:'JetBrains Mono',monospace; }
+    .mine-table-wrap { position:relative; overflow-x:auto; }
+    .mine-data-table { width:100%; border-collapse:collapse; font-size:.8125rem; }
+    .mine-data-table thead th { background:#1e293b; color:#e2e8f0; font-weight:600; text-align:left; padding:.75rem .85rem; white-space:nowrap; cursor:pointer; user-select:none; transition:background .15s; font-family:'JetBrains Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; }
+    .mine-data-table thead th:hover { background:#334155; }
+    .mine-data-table thead th.sort-asc::after,.mine-data-table thead th.sort-desc::after { margin-left:.35rem; font-size:.65rem; opacity:.9; }
+    .mine-data-table thead th.sort-asc::after { content:'▲'; } .mine-data-table thead th.sort-desc::after { content:'▼'; }
+    .mine-data-table tbody tr { transition:background .15s; } .mine-data-table tbody tr:nth-child(even) { background:var(--mine-row-alt); }
+    .mine-data-table tbody tr:hover { background:rgba(37,99,235,.07); }
+    .mine-data-table td { padding:.65rem .85rem; border-bottom:1px solid var(--border); color:var(--text-primary); vertical-align:middle; }
+    .mine-aisc { font-family:'JetBrains Mono',monospace; font-weight:600; }
+    .mine-aisc.tier-low{color:#15803d}.mine-aisc.tier-mid{color:#ca8a04}.mine-aisc.tier-high{color:#ea580c}.mine-aisc.tier-extreme{color:#dc2626}
+    .mine-status { display:inline-block; font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:.25rem .5rem; border-radius:6px; }
+    .mine-status--operating{background:#dcfce7;color:#166534}.mine-status--ramp{background:#fef9c3;color:#854d0e}.mine-status--dev{background:#dbeafe;color:#1e40af}.mine-status--care{background:#f1f5f9;color:#475569}
+    .mine-map-placeholder { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:.75rem; padding:1.1rem; min-height:180px; align-content:start; background:linear-gradient(145deg,#f8fafc 0%,#eef2ff 100%); }
+    .mine-flag-chip { display:flex; align-items:center; gap:.5rem; padding:.5rem .65rem; background:var(--bg-primary); border:1px solid var(--border); border-radius:8px; font-size:.78rem; font-weight:600; box-shadow:var(--mine-shadow); }
+    .mine-flag-chip span[role="img"] { font-size:1.25rem; line-height:1; }
+    .mine-chart-grid { display:grid; grid-template-columns:1fr; gap:1.25rem; } @media(min-width:960px){ .mine-chart-grid{ grid-template-columns:1.2fr 1fr; } }
+    .mine-bar-chart { padding:1rem 1.1rem 1.25rem; display:flex; flex-direction:column; gap:.65rem; }
+    .mine-bar-row { display:grid; grid-template-columns:minmax(100px,1fr) 1fr minmax(52px,auto); gap:.5rem; align-items:center; font-size:.75rem; }
+    .mine-bar-track { height:10px; background:#e2e8f0; border-radius:999px; overflow:hidden; }
+    .mine-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--primary) 0%,#1d4ed8 100%); transition:width .45s cubic-bezier(.4,0,.2,1); }
+    .mine-pie-bars { padding:1rem 1.1rem 1.25rem; display:flex; flex-direction:column; gap:.75rem; }
+    .mine-pie-row { display:grid; grid-template-columns:1fr auto; gap:.35rem .75rem; font-size:.78rem; }
+    .mine-pie-row .mine-pie-label { font-weight:600; color:var(--text-primary); } .mine-pie-row .mine-pie-pct { font-family:'JetBrains Mono',monospace; color:var(--text-secondary); text-align:right; }
+    .mine-pie-track { grid-column:1/-1; height:8px; background:#e2e8f0; border-radius:999px; overflow:hidden; }
+    .mine-pie-fill { height:100%; border-radius:999px; transition:width .5s ease; }
+    .mine-rank-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
+    .mine-rank-list { list-style:none; margin:0; padding:0; }
+    .mine-rank-list li { display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.55rem 0; border-bottom:1px solid var(--border); font-size:.82rem; transition:padding-left .15s; }
+    .mine-rank-list li:hover { padding-left:4px; } .mine-rank-list li:last-child { border-bottom:none; }
+    .mine-rank-pos { font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--primary); min-width:1.5rem; }
+    .mine-benchmark { padding:1.25rem; } .mine-benchmark-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:1rem; }
+    .mine-field label { display:block; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--text-secondary); margin-bottom:.35rem; }
+    .mine-field input,.mine-field select { width:100%; padding:.55rem .65rem; border-radius:8px; border:1px solid var(--border); font-size:.875rem; background:var(--bg-primary); transition:border-color .2s; }
+    .mine-field input:focus,.mine-field select:focus { outline:none; border-color:var(--primary); }
+    .mine-btn-compare { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.65rem 1.25rem; font-weight:700; font-size:.875rem; border:none; border-radius:8px; cursor:pointer; background:var(--primary); color:#fff; transition:background .2s,transform .15s; }
+    .mine-btn-compare:hover { background:#1d4ed8; transform:translateY(-1px); }
+    .mine-benchmark-results { margin-top:1rem; padding:1rem; border-radius:8px; background:var(--bg-secondary); border:1px dashed var(--border); min-height:4rem; font-size:.875rem; color:var(--text-secondary); }
+    .mine-benchmark-results strong { color:var(--text-primary); }
+    .mine-premium-zone { position:relative; }
+    .mine-premium-zone.is-locked .mine-blur-target { filter:blur(6px); pointer-events:none; user-select:none; transition:filter .35s; }
+    .mine-premium-overlay { display:none; position:absolute; inset:0; z-index:10; align-items:center; justify-content:center; padding:1.5rem; background:rgba(248,250,252,.55); backdrop-filter:blur(2px); }
+    .mine-premium-zone.is-locked .mine-premium-overlay { display:flex; }
+    .mine-premium-card { max-width:420px; text-align:center; padding:1.75rem 1.5rem; background:var(--bg-primary); border:2px solid var(--accent); border-radius:var(--mine-radius); box-shadow:0 20px 50px rgba(15,23,42,.15); }
+    .mine-premium-card h4 { margin:0 0 .5rem; font-size:1.15rem; color:var(--text-primary); }
+    .mine-premium-card p { margin:0 0 1rem; font-size:.9rem; color:var(--text-secondary); line-height:1.5; }
+    .mine-premium-card .mine-price { font-family:'JetBrains Mono',monospace; font-size:1.5rem; font-weight:800; color:var(--accent); margin-bottom:.75rem; }
+    .mine-premium-card a { display:inline-block; padding:.65rem 1.5rem; background:var(--mine-header-bg); color:#fff; font-weight:700; border-radius:8px; text-decoration:none; transition:background .2s; }
+    .mine-premium-card a:hover { background:#1e293b; }
+    .mine-section-title { font-size:1.35rem; font-weight:800; letter-spacing:-.03em; margin:0 0 .35rem; color:var(--text-primary); }
+    .mine-section-sub { margin:0 0 1.25rem; color:var(--text-secondary); font-size:.95rem; max-width:720px; line-height:1.55; }
+    .mine-note { font-size:.75rem; color:var(--text-secondary); margin-top:.75rem; line-height:1.45; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+  </style>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Mine-Level Analysis","description":"Premium mine-by-mine intelligence: costs, reserves, life of mine, and benchmarking for global mining equities.","url":"https://globalminingintel.com/mine-analysis.html","isPartOf":{"@type":"WebSite","name":"The Resource Investor","url":"https://globalminingintel.com/"},"dateModified":"2026-04-05"}</script>
+</head>
+<body class="mine-page-wrap">
+  <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">&#9650;</span>
+        The Resource Investor
+        <span class="premium-status" aria-live="polite"></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="stocks.html">Stocks</a>
+        <a href="articles/copper-stocks-guide.html">Copper</a>
+        <a href="articles/gold-mining-stocks.html">Gold</a>
+        <a href="news.html">News</a>
+        <a href="premium.html">Premium</a>
+        <a href="about.html">About</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <header class="article-header">
+    <div class="container-narrow">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> &rsaquo; <a href="premium.html">Premium</a> &rsaquo; Mine Analysis
+      </nav>
+      <h1>Mine-Level Intelligence Terminal</h1>
+      <p class="subtitle">Granular asset data, cost curves, and cross-company benchmarking &mdash; aligned with <code style="font-size:0.95em;">MINES_DATA</code> in our research database.</p>
+      <div class="article-meta">
+        <span>Updated April 2026</span>
+        <span>&bull;</span>
+        <span>Illustrative metrics from public filings</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="mine-hero-bar">
+          <div>
+            <div class="mine-badge-row">
+              <span class="mine-badge">Premium Desk</span>
+              <span class="mine-badge mine-badge-muted">Bloomberg-style layout</span>
+            </div>
+            <h2 class="mine-section-title" style="margin-top:0.75rem;">Company &amp; asset selection</h2>
+            <p class="mine-section-sub" style="margin-bottom:0;">Choose a producer to load the full mine roster, economics, and geography. Data keys match <strong>MINES_DATA</strong> (ticker &rarr; mine array).</p>
+          </div>
+          <div class="mine-selector-group">
+            <label for="mine-company-select">Company (all covered tickers)</label>
+            <select id="mine-company-select" class="mine-select" aria-describedby="mine-select-help">
+              <option value="">Select a ticker&hellip;</option>
+              <option value="FCX">FCX &mdash; Freeport-McMoRan</option>
+              <option value="SCCO">SCCO &mdash; Southern Copper</option>
+              <option value="TECK">TECK &mdash; Teck Resources</option>
+              <option value="HBM">HBM &mdash; Hudbay Minerals</option>
+              <option value="GOLD">GOLD &mdash; Barrick Gold</option>
+              <option value="NEM">NEM &mdash; Newmont Corporation</option>
+              <option value="AEM">AEM &mdash; Agnico Eagle Mines</option>
+              <option value="KGC">KGC &mdash; Kinross Gold</option>
+              <option value="BTG">BTG &mdash; B2Gold Corp</option>
+              <option value="GFI">GFI &mdash; Gold Fields</option>
+              <option value="AU">AU &mdash; AngloGold Ashanti</option>
+              <option value="PAAS">PAAS &mdash; Pan American Silver</option>
+              <option value="AG">AG &mdash; First Majestic Silver</option>
+              <option value="BHP">BHP &mdash; BHP Group</option>
+              <option value="RIO">RIO &mdash; Rio Tinto</option>
+              <option value="VALE">VALE &mdash; Vale S.A.</option>
+              <option value="ALB">ALB &mdash; Albemarle Corporation</option>
+              <option value="LAC">LAC &mdash; Lithium Americas</option>
+            </select>
+            <span id="mine-select-help" class="mine-note">18 US-listed miners in <code>stocks-data.js</code>; mine arrays keyed by ticker in <code>mines-data.js</code>.</span>
+          </div>
+        </div>
+
+        <div id="company-overview" class="mine-overview-grid" aria-live="polite">
+          <div class="mine-stat-card">
+            <div class="mine-stat-label">Company</div>
+            <div class="mine-stat-value" id="ov-name">&mdash;</div>
+          </div>
+          <div class="mine-stat-card">
+            <div class="mine-stat-label">Ticker / Exchange</div>
+            <div class="mine-stat-value" id="ov-ticker">&mdash;</div>
+          </div>
+          <div class="mine-stat-card">
+            <div class="mine-stat-label">Market cap</div>
+            <div class="mine-stat-value" id="ov-mcap">&mdash;</div>
+          </div>
+          <div class="mine-stat-card">
+            <div class="mine-stat-label">Category</div>
+            <div class="mine-stat-value" id="ov-cat">&mdash;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="mine-section-title">Asset-level production &amp; economics</h2>
+        <p class="mine-section-sub">Sortable columns (handled by <code>mine-analysis.js</code>). AISC coloring follows gold $/oz bands; non-gold units normalized in script.</p>
+
+        <div id="mine-premium-data" class="mine-premium-zone mine-blur-parent">
+          <div class="mine-blur-target">
+            <div class="mine-panel" style="margin-bottom:1.25rem;">
+              <div class="mine-panel-header">
+                <h3>All mines &mdash; selected company</h3>
+                <span id="mine-table-caption">Awaiting selection</span>
+              </div>
+              <div class="mine-table-wrap">
+                <table class="mine-data-table" id="mines-table" aria-describedby="mine-table-caption">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-sort="name">Mine Name</th>
+                      <th scope="col" data-sort="location">Location</th>
+                      <th scope="col" data-sort="ownership">Ownership %</th>
+                      <th scope="col" data-sort="type">Type</th>
+                      <th scope="col" data-sort="production">Production</th>
+                      <th scope="col" data-sort="aisc">AISC / Cash</th>
+                      <th scope="col" data-sort="reserves">Reserves</th>
+                      <th scope="col" data-sort="life">Mine Life</th>
+                      <th scope="col" data-sort="status">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mines-table-body">
+                    <tr>
+                      <td colspan="9" style="text-align:center;padding:2rem;color:var(--text-secondary);">Select a company to load <strong>MINES_DATA[ticker]</strong>.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="mine-chart-grid">
+              <div class="mine-panel">
+                <div class="mine-panel-header">
+                  <h3>Geography map</h3>
+                  <span>Flags by host country</span>
+                </div>
+                <div id="mine-map-placeholder" class="mine-map-placeholder" aria-label="Mine locations by country">
+                  <div class="mine-flag-chip"><span role="img" aria-hidden="true">&#127987;&#65039;</span> Map syncs to mine list</div>
+                </div>
+              </div>
+
+              <div class="mine-panel">
+                <div class="mine-panel-header">
+                  <h3>AISC cost curve</h3>
+                  <span>$/unit vs assets</span>
+                </div>
+                <div id="cost-curve-chart" class="mine-bar-chart" role="img" aria-label="AISC comparison bar chart">
+                  <div class="mine-note" style="padding:0 0 0.5rem;">Bars render from mine-level AISC; width scales to peer set.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mine-panel" style="margin-top:1.25rem;">
+              <div class="mine-panel-header">
+                <h3>Reserves breakdown</h3>
+                <span>% of company reserves by mine</span>
+              </div>
+              <div id="reserves-breakdown" class="mine-pie-bars" aria-label="Reserves percentage by mine">
+                <p class="mine-note" style="margin:0;">CSS horizontal bars (pie-style) populate from reserve tonnage or metal-equivalent shares.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="mine-premium-overlay-data" class="mine-premium-overlay" role="dialog" aria-modal="true" aria-labelledby="premium-data-title">
+            <div class="mine-premium-card">
+              <h4 id="premium-data-title">Unlock mine-level data</h4>
+              <div class="mine-price">$29.99/mo</div>
+              <p>Full tables, cost curves, and reserves intelligence are included with Resource Investor Premium.</p>
+              <a href="premium.html">Subscribe to Premium</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="mine-section-title">Cross-company benchmarks</h2>
+        <p class="mine-section-sub">Global rankings across the full <strong>MINES_DATA</strong> universe: lowest unit costs, largest reserve bases, and &ldquo;best value&rdquo; (cost vs. duration).</p>
+
+        <div id="mine-premium-benchmarks" class="mine-premium-zone mine-blur-parent">
+          <div class="mine-blur-target">
+            <div class="mine-rank-grid">
+              <div class="mine-panel">
+                <div class="mine-panel-header">
+                  <h3>Lowest cost mines</h3>
+                  <span>Top 10 by AISC</span>
+                </div>
+                <ol id="lowest-cost-ranking" class="mine-rank-list" aria-label="Lowest AISC mines" start="1"></ol>
+              </div>
+              <div class="mine-panel">
+                <div class="mine-panel-header">
+                  <h3>Largest reserves</h3>
+                  <span>Top 10 by reserves</span>
+                </div>
+                <ol id="largest-reserves-ranking" class="mine-rank-list" aria-label="Largest reserves"></ol>
+              </div>
+              <div class="mine-panel">
+                <div class="mine-panel-header">
+                  <h3>Best value mines</h3>
+                  <span>Low AISC + long life</span>
+                </div>
+                <ol id="best-value-ranking" class="mine-rank-list" aria-label="Best value mines"></ol>
+              </div>
+            </div>
+          </div>
+          <div id="mine-premium-overlay-bench" class="mine-premium-overlay" role="dialog" aria-modal="true" aria-labelledby="premium-bench-title">
+            <div class="mine-premium-card">
+              <h4 id="premium-bench-title">Premium rankings</h4>
+              <div class="mine-price">$29.99/mo</div>
+              <p>See how every asset stacks up globally. Subscribe for live rankings and downloadable tables.</p>
+              <a href="premium.html">Get Premium Access</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="mine-section-title">Custom mine benchmark</h2>
+        <p class="mine-section-sub">Enter your asset&rsquo;s operating parameters to see approximate rank versus the full database (computed in <code>mine-analysis.js</code>).</p>
+
+        <div id="mine-premium-tool" class="mine-premium-zone mine-blur-parent">
+          <div class="mine-blur-target">
+            <div class="mine-panel">
+              <div class="mine-panel-header">
+                <h3>Interactive comparator</h3>
+                <span>Your mine vs. database</span>
+              </div>
+              <div id="benchmark-tool" class="mine-benchmark">
+                <form id="mine-benchmark-form" action="#" method="get" onsubmit="return false;">
+                  <div class="mine-benchmark-grid">
+                    <div class="mine-field">
+                      <label for="bm-name">Mine name</label>
+                      <input type="text" id="bm-name" name="mine_name" placeholder="e.g. Project Norte" autocomplete="off">
+                    </div>
+                    <div class="mine-field">
+                      <label for="bm-metal">Metal type</label>
+                      <select id="bm-metal" name="metal">
+                        <option value="gold">Gold</option>
+                        <option value="silver">Silver</option>
+                        <option value="copper">Copper</option>
+                        <option value="zinc">Zinc</option>
+                        <option value="lithium">Lithium</option>
+                        <option value="nickel">Nickel</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="mine-field">
+                      <label for="bm-prod">Production (units)</label>
+                      <input type="text" id="bm-prod" name="production" inputmode="decimal" placeholder="e.g. 250 (koz Au)">
+                    </div>
+                    <div class="mine-field">
+                      <label for="bm-aisc">AISC ($ / unit)</label>
+                      <input type="text" id="bm-aisc" name="aisc" inputmode="decimal" placeholder="e.g. 1150">
+                    </div>
+                    <div class="mine-field">
+                      <label for="bm-reserves">Reserves</label>
+                      <input type="text" id="bm-reserves" name="reserves" inputmode="decimal" placeholder="Moz, Mlb Cu, etc.">
+                    </div>
+                    <div class="mine-field">
+                      <label for="bm-life">Mine life (years)</label>
+                      <input type="text" id="bm-life" name="mine_life" inputmode="decimal" placeholder="e.g. 12">
+                    </div>
+                  </div>
+                  <button type="button" class="mine-btn-compare" id="mine-compare-btn">Compare to database</button>
+                </form>
+                <div id="mine-benchmark-results" class="mine-benchmark-results" aria-live="polite">
+                  Results appear after you click <strong>Compare to database</strong> &mdash; ranks vs. all mines in <strong>MINES_DATA</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="mine-premium-overlay-tool" class="mine-premium-overlay" role="dialog" aria-modal="true" aria-labelledby="premium-tool-title">
+            <div class="mine-premium-card">
+              <h4 id="premium-tool-title">Benchmark tool</h4>
+              <div class="mine-price">$29.99/mo</div>
+              <p>Model your asset against our global mine database with Premium.</p>
+              <a href="premium.html">Subscribe Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="email-cta">
+          <h3>Get Our Weekly Mining Stock Picks</h3>
+          <p>Free weekly newsletter with our latest analysis, top picks, and market insights delivered to your inbox.</p>
+          <form class="email-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px;">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">The Resource Investor</div>
+          <p class="footer-desc">Independent mining stock analysis and investment research. Helping investors find undervalued opportunities in the resource sector.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Guides</h5>
+          <a href="articles/best-mining-stocks-2026.html">Best Mining Stocks</a>
+          <a href="articles/copper-stocks-guide.html">Copper Investing</a>
+          <a href="articles/gold-mining-stocks.html">Gold Mining Stocks</a>
+          <a href="articles/mining-etfs-vs-stocks.html">ETFs vs Stocks</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="articles/best-stock-screeners.html">Stock Screeners</a>
+          <a href="stocks.html">Stock Directory</a>
+          <a href="https://www.tradingview.com/?aff_id=165309" target="_blank" rel="noopener sponsored">TradingView</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="about.html#disclosure">Affiliate Disclosure</a>
+          <a href="about.html#privacy">Privacy Policy</a>
+          <a href="about.html#terms">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Resource Investor. All rights reserved.</span>
+        <p class="disclosure">Affiliate Disclosure: Some links on this site are affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase or sign up. This helps support our free content. We only recommend products we genuinely believe in. Nothing on this site constitutes financial advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function isPremium() {
+      try {
+        var p = JSON.parse(localStorage.getItem('ri_premium') || '{}');
+        return p.active && p.expires && new Date(p.expires) > new Date();
+      } catch(e) { return false; }
+    }
+
+    (function syncPremiumGate() {
+      document.documentElement.setAttribute('data-premium', isPremium() ? 'true' : 'false');
+      var zones = document.querySelectorAll('.mine-premium-zone');
+      zones.forEach(function(z) {
+        if (!isPremium()) z.classList.add('is-locked');
+        else z.classList.remove('is-locked');
+      });
+    })();
+  </script>
+  <script src="js/stocks-data.js"></script>
+  <script src="js/mines-data.js"></script>
+  <script src="js/mine-analysis.js"></script>
+  <script src="js/main-v2.js"></script>
+  <script src="js/live-data.js"></script>
+  <script src="js/email-signup.js"></script>
+  <script src="js/affiliate-config.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>
