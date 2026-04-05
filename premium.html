@@ -210,17 +210,13 @@
   <script>
   (function() {
     var STRIPE_PK = 'pk_live_51TIryzDYxvNGV3FirEWtwgFvPZMgXPPMN6lGe0gxu3e1KNr1QFKRBzcw0ni6yx39dMx2UhHsjTFszwrAK2cWUZgP00ew1cLVLe';
-    var PRICE_ID  = 'REPLACE_WITH_YOUR_STRIPE_PRICE_ID';
+    var PRICE_ID  = 'price_1TIsIgDYxvNGV3FiwCkcZW0i';
 
     var stripe = Stripe(STRIPE_PK);
 
     document.querySelectorAll('#stripe-checkout-btn, .stripe-checkout-trigger').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
-        if (PRICE_ID.indexOf('REPLACE') !== -1) {
-          alert('Stripe Price ID not yet configured. Create a subscription product in your Stripe Dashboard (stripe.com/dashboard) → Products → Add product → set price to $14.99/month recurring → copy the Price ID (starts with price_) and paste it into premium.html.');
-          return;
-        }
         stripe.redirectToCheckout({
           lineItems: [{ price: PRICE_ID, quantity: 1 }],
           mode: 'subscription',
