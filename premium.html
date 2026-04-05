@@ -42,6 +42,7 @@
           <button type="button" class="premium-cta-btn" id="stripe-checkout-btn">Start Premium Now</button>
         </p>
         <p style="font-size: 14px; color: rgba(255,255,255,0.55); margin: 0;">Cancel anytime. 7-day free trial.</p>
+        <p id="manage-sub-link" style="display:none; margin-top: 16px;"><a href="https://billing.stripe.com/p/login/4gM5kD4qG4Ag0BN1dw0gw00" style="color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: underline;">Already subscribed? Manage your subscription &rarr;</a></p>
       </div>
     </section>
 
@@ -211,12 +212,26 @@
   (function() {
     var STRIPE_PK = 'pk_live_51TIryzDYxvNGV3FirEWtwgFvPZMgXPPMN6lGe0gxu3e1KNr1QFKRBzcw0ni6yx39dMx2UhHsjTFszwrAK2cWUZgP00ew1cLVLe';
     var PRICE_ID  = 'price_1TIsIgDYxvNGV3FiwCkcZW0i';
+    var PORTAL_URL = 'https://billing.stripe.com/p/login/4gM5kD4qG4Ag0BN1dw0gw00';
 
     var stripe = Stripe(STRIPE_PK);
+
+    var isPrem = (function() {
+      try { var p = JSON.parse(localStorage.getItem('ri_premium') || '{}'); return p.active && p.expires && new Date(p.expires) > new Date(); } catch(e) { return false; }
+    })();
+
+    var checkoutBtn = document.getElementById('stripe-checkout-btn');
+    var manageLink = document.getElementById('manage-sub-link');
+
+    if (isPrem) {
+      if (checkoutBtn) { checkoutBtn.textContent = 'You\'re Premium \u2713'; checkoutBtn.style.opacity = '0.7'; checkoutBtn.style.cursor = 'default'; }
+      if (manageLink) manageLink.style.display = 'block';
+    }
 
     document.querySelectorAll('#stripe-checkout-btn, .stripe-checkout-trigger').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
+        if (isPrem) return;
         stripe.redirectToCheckout({
           lineItems: [{ price: PRICE_ID, quantity: 1 }],
           mode: 'subscription',
