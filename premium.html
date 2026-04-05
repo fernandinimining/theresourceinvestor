@@ -39,7 +39,7 @@
         <p>Interactive sensitivity analysis for 20+ global miners. Adjust metal prices. See real-time impact on revenue, EBITDA, and per-share value.</p>
         <div class="premium-price">$14.99<span class="premium-price-sub">/month</span></div>
         <p style="margin-bottom: 20px;">
-          <a href="https://buy.stripe.com/test_placeholder" class="premium-cta-btn" id="stripe-checkout-btn">Start Premium Now</a>
+          <button type="button" class="premium-cta-btn" id="stripe-checkout-btn">Start Premium Now</button>
         </p>
         <p style="font-size: 14px; color: rgba(255,255,255,0.55); margin: 0;">Cancel anytime. 7-day free trial.</p>
       </div>
@@ -203,8 +203,35 @@
     </div>
   </footer>
 
+  <script src="https://js.stripe.com/v3/"></script>
   <script src="js/stocks-data.js"></script>
   <script src="js/sensitivity.js"></script>
   <script src="js/main-v2.js"></script>
+  <script>
+  (function() {
+    var STRIPE_PK = 'pk_live_51TIryzDYxvNGV3FirEWtwgFvPZMgXPPMN6lGe0gxu3e1KNr1QFKRBzcw0ni6yx39dMx2UhHsjTFszwrAK2cWUZgP00ew1cLVLe';
+    var PRICE_ID  = 'REPLACE_WITH_YOUR_STRIPE_PRICE_ID';
+
+    var stripe = Stripe(STRIPE_PK);
+
+    document.querySelectorAll('#stripe-checkout-btn, .stripe-checkout-trigger').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (PRICE_ID.indexOf('REPLACE') !== -1) {
+          alert('Stripe Price ID not yet configured. Create a subscription product in your Stripe Dashboard (stripe.com/dashboard) → Products → Add product → set price to $14.99/month recurring → copy the Price ID (starts with price_) and paste it into premium.html.');
+          return;
+        }
+        stripe.redirectToCheckout({
+          lineItems: [{ price: PRICE_ID, quantity: 1 }],
+          mode: 'subscription',
+          successUrl: window.location.origin + window.location.pathname.replace('premium.html', 'premium-success.html') + '?session_id={CHECKOUT_SESSION_ID}',
+          cancelUrl: window.location.href
+        }).then(function(result) {
+          if (result.error) alert(result.error.message);
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
