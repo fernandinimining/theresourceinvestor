@@ -24,7 +24,7 @@
 
 var AFFILIATE_LINKS = {
   ibkr:          'https://www.interactivebrokers.com',          // REPLACE with your IBKR referral link
-  tradingview:   'https://www.tradingview.com/?aff_id=XXXXX',   // REPLACE with your TradingView partner link
+  tradingview:   'https://www.tradingview.com/?aff_id=165309',
   webull:        'https://www.webull.com',                       // REPLACE with your Webull referral link
   seekingalpha:  'https://www.seekingalpha.com',                 // REPLACE with your Seeking Alpha affiliate link
   koyfin:        'https://www.koyfin.com',                       // REPLACE with your Koyfin affiliate link
