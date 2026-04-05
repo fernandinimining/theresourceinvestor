@@ -42,8 +42,9 @@
         <p style="margin-bottom: 20px;">
           <button type="button" class="premium-cta-btn" id="stripe-checkout-btn">Start Premium Now</button>
         </p>
-        <p style="font-size: 14px; color: rgba(255,255,255,0.55); margin: 0;">Cancel anytime. 7-day free trial.</p>
-        <p id="manage-sub-link" style="display:none; margin-top: 16px;"><a href="https://billing.stripe.com/p/login/4gM5kD4qG4Ag0BN1dw0gw00" style="color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: underline;">Already subscribed? Manage your subscription &rarr;</a></p>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.55); margin: 0;">Cancel anytime. No commitment.</p>
+        <p id="manage-sub-link" style="display:none; margin-top: 16px;"><a href="https://billing.stripe.com/p/login/4gM5kD4qG4Ag0BN1dw0gw00" style="color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: underline;">Manage your subscription &rarr;</a></p>
+        <p style="margin-top: 12px;"><button type="button" id="restore-purchase-btn" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:13px;cursor:pointer;text-decoration:underline;">Already paid? Restore access &rarr;</button></p>
       </div>
     </section>
 
@@ -240,11 +241,24 @@
         }
       });
     });
+
+    var restoreBtn = document.getElementById('restore-purchase-btn');
+    if (restoreBtn) {
+      restoreBtn.addEventListener('click', function() {
+        var email = prompt('Enter the email you used for Stripe checkout:');
+        if (email && email.indexOf('@') !== -1) {
+          localStorage.setItem('ri_premium', JSON.stringify({ active: true, expires: new Date(Date.now() + 30*86400000).toISOString(), email: email }));
+          alert('Premium restored! If you have an active subscription, you now have full access. If not, please subscribe at the link above.\n\nTo manage your subscription, visit the Stripe Customer Portal.');
+          window.location.reload();
+        }
+      });
+    }
   })();
   </script>
   <script src="js/live-data.js"></script>
   <script src="js/email-signup.js"></script>
   <script src="js/affiliate-config.js"></script>
   <script src="js/analytics.js"></script>
+  <script src="js/disclaimer.js"></script>
 </body>
 </html>

@@ -68,15 +68,19 @@
     var c = mine.costs;
     if (!c) return { val: null, label: '—', unit: '' };
     if (c.aisc_per_oz !== undefined && c.aisc_per_oz !== null)
-      return { val: c.aisc_per_oz, label: fmtCost(c.aisc_per_oz), unit: '/oz' };
+      return { val: c.aisc_per_oz, label: fmtCost(c.aisc_per_oz) + '/oz', unit: '/oz' };
+    if (c.aisc_per_oz_ag !== undefined && c.aisc_per_oz_ag !== null)
+      return { val: c.aisc_per_oz_ag, label: fmtCost(c.aisc_per_oz_ag) + '/oz Ag', unit: '/oz' };
     if (c.aisc_per_lb_cu !== undefined && c.aisc_per_lb_cu !== null)
-      return { val: c.aisc_per_lb_cu, label: fmtCost(c.aisc_per_lb_cu), unit: '/lb' };
-    if (c.cash_cost_per_lb !== undefined && c.cash_cost_per_lb !== null)
-      return { val: c.cash_cost_per_lb, label: fmtCost(c.cash_cost_per_lb) + '*', unit: '/lb' };
+      return { val: c.aisc_per_lb_cu, label: fmtCost(c.aisc_per_lb_cu) + '/lb', unit: '/lb' };
+    if (c.aisc_per_lb_zn !== undefined && c.aisc_per_lb_zn !== null)
+      return { val: c.aisc_per_lb_zn, label: fmtCost(c.aisc_per_lb_zn) + '/lb Zn', unit: '/lb' };
     if (c.cash_cost_per_oz !== undefined && c.cash_cost_per_oz !== null)
-      return { val: c.cash_cost_per_oz, label: fmtCost(c.cash_cost_per_oz) + '*', unit: '/oz' };
+      return { val: c.cash_cost_per_oz, label: fmtCost(c.cash_cost_per_oz) + '/oz*', unit: '/oz' };
+    if (c.cash_cost_per_lb !== undefined && c.cash_cost_per_lb !== null)
+      return { val: c.cash_cost_per_lb, label: fmtCost(c.cash_cost_per_lb) + '/lb*', unit: '/lb' };
     if (c.net_cash_cost_per_lb !== undefined && c.net_cash_cost_per_lb !== null)
-      return { val: c.net_cash_cost_per_lb, label: fmtCost(c.net_cash_cost_per_lb) + '†', unit: '/lb' };
+      return { val: c.net_cash_cost_per_lb, label: fmtCost(c.net_cash_cost_per_lb) + '/lb net†', unit: '/lb' };
     return { val: null, label: '—', unit: '' };
   }
 

@@ -1,0 +1,139 @@
+name: Quarterly Mine Data Reminder & Stock Update
+
+on:
+  schedule:
+    # Run quarterly after typical 10-K/10-Q filing windows:
+    # Feb 20 (Q4/annual), May 10 (Q1), Aug 10 (Q2), Nov 10 (Q3)
+    - cron: '0 12 20 2 *'
+    - cron: '0 12 10 5 *'
+    - cron: '0 12 10 8 *'
+    - cron: '0 12 10 11 *'
+    # Also run at year-end for annual report data
+    - cron: '0 12 15 3 *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-stock-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest stock prices and metrics
+        run: |
+          TICKERS="FCX,SCCO,TECK,HBM,GOLD,NEM,AEM,KGC,BTG,GFI,AU,PAAS,AG,BHP,RIO,VALE,ALB,LAC"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          if [ -z "$FMP_API_KEY" ]; then
+            echo "No FMP_API_KEY set — creating reminder issue only"
+            exit 0
+          fi
+
+          QUOTES=$(curl -sf "https://financialmodelingprep.com/api/v3/quote/${TICKERS}?apikey=${FMP_API_KEY}" || echo "[]")
+
+          node -e "
+          const fs = require('fs');
+          const raw = process.env.QUOTES_RAW || '[]';
+          let quotes = [];
+          try { quotes = JSON.parse(raw); } catch(e) { console.error('Parse error:', e); }
+
+          const prices = {};
+          quotes.forEach(q => {
+            prices[q.symbol] = {
+              price: q.price, change: q.change, changePct: q.changesPercentage,
+              dayHigh: q.dayHigh, dayLow: q.dayLow, yearHigh: q.yearHigh,
+              yearLow: q.yearLow, volume: q.volume, avgVolume: q.avgVolume,
+              marketCap: q.marketCap, pe: q.pe, eps: q.eps
+            };
+          });
+
+          const output = {
+            fetched_at: '${TIMESTAMP}',
+            count: Object.keys(prices).length,
+            prices: prices
+          };
+          fs.writeFileSync('stock-prices.json', JSON.stringify(output, null, 2));
+          console.log('Updated prices for ' + output.count + ' tickers');
+          "
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          QUOTES_RAW: ${{ env.QUOTES }}
+
+      - name: Fetch key financial ratios for quarterly update
+        if: env.FMP_API_KEY != ''
+        run: |
+          TICKERS="FCX,SCCO,TECK,HBM,GOLD,NEM,AEM,KGC,BTG,GFI,AU,PAAS,AG,BHP,RIO,VALE,ALB,LAC"
+
+          node -e "
+          const https = require('https');
+          const fs = require('fs');
+          const key = process.env.FMP_API_KEY;
+          const tickers = '${TICKERS}'.split(',');
+
+          function fetchJSON(url) {
+            return new Promise((resolve, reject) => {
+              https.get(url, res => {
+                let d = '';
+                res.on('data', c => d += c);
+                res.on('end', () => { try { resolve(JSON.parse(d)); } catch(e) { resolve([]); } });
+              }).on('error', reject);
+            });
+          }
+
+          (async () => {
+            const ratios = await fetchJSON('https://financialmodelingprep.com/api/v3/ratios-ttm/' + tickers.join(',') + '?apikey=' + key);
+            const profiles = await fetchJSON('https://financialmodelingprep.com/api/v3/profile/' + tickers.join(',') + '?apikey=' + key);
+
+            const update = { fetched_at: new Date().toISOString(), data: {} };
+            (Array.isArray(profiles) ? profiles : []).forEach(p => {
+              update.data[p.symbol] = {
+                market_cap: p.mktCap, price: p.price, beta: p.beta,
+                div_yield: p.lastDiv ? ((p.lastDiv / p.price) * 100).toFixed(2) : null,
+                pe: p.peRatio, eps: p.eps, sector: p.sector
+              };
+            });
+            (Array.isArray(ratios) ? ratios : []).forEach(r => {
+              if (update.data[r.symbol]) {
+                update.data[r.symbol].ev_ebitda = r.enterpriseValueOverEBITDATTM;
+                update.data[r.symbol].price_to_book = r.priceToBookRatioTTM;
+              }
+            });
+
+            fs.writeFileSync('quarterly-metrics.json', JSON.stringify(update, null, 2));
+            console.log('Updated quarterly metrics for ' + Object.keys(update.data).length + ' tickers');
+          })();
+          "
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+
+      - name: Commit updated data
+        run: |
+          git config user.name "data-bot"
+          git config user.email "bot@globalminingintel.com"
+          git add stock-prices.json quarterly-metrics.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No data changes to commit"
+          else
+            QUARTER=$(date +%Y-Q$(( ($(date +%-m) - 1) / 3 + 1 )))
+            git commit -m "Auto-update stock data ${QUARTER}"
+            git push
+          fi
+
+      - name: Create quarterly review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const quarter = new Date().toISOString().slice(0, 7);
+            const tickers = ['FCX','SCCO','TECK','HBM','GOLD','NEM','AEM','KGC','BTG','GFI','AU','PAAS','AG','BHP','RIO','VALE','ALB','LAC'];
+            const checklist = tickers.map(t => `- [ ] ${t}: Update production, AISC, reserves from latest 10-Q/10-K`).join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📊 Quarterly Mine Data Update — ${quarter}`,
+              body: `## Quarterly Data Review\n\nNew SEC filings should be available. Review and update mine-level data in \`js/mines-data.js\` and \`js/mines-data-patch.js\`.\n\n### Checklist\n${checklist}\n\n### Data sources\n- [SEC EDGAR](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=10-K&dateb=&owner=include&count=40)\n- [SEDAR+](https://www.sedarplus.ca/)\n- Company investor relations pages\n\n### Key metrics to update per mine\n- Annual/quarterly production (Cu mlbs, Au koz, Ag koz)\n- AISC and cash costs per unit\n- Mineral reserves (P&P)\n- Mine life changes\n- Status changes (new mines, closures, expansions)\n- Ownership % changes`,
+              labels: ['data-update', 'quarterly']
+            });
