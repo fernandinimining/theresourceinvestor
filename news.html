@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mining News — The Resource Investor</title>
+  <meta name="description" content="Latest mining and metals news: copper, gold, silver, lithium, and base metals. Real-time headlines for resource investors from public sources, with filters by metal.">
+  <link rel="canonical" href="https://theresourceinvestor.com/news.html">
+
+  <meta property="og:title" content="Mining News — The Resource Investor">
+  <meta property="og:description" content="Latest mining and metals news with filters by copper, gold, silver, lithium, and diversified producers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theresourceinvestor.com/news.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mining News — The Resource Investor">
+  <meta name="twitter:description" content="Real-time coverage of copper, gold, silver, lithium, and base metals markets.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/new-styles.css">
+</head>
+<body>
+  <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">&#9650;</span>
+        The Resource Investor
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="stocks.html">Stocks</a>
+        <a href="articles/copper-stocks-guide.html">Copper</a>
+        <a href="articles/gold-mining-stocks.html">Gold</a>
+        <a href="news.html" class="active">News</a>
+        <a href="premium.html">Premium</a>
+        <a href="about.html">About</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <header class="article-header">
+      <div class="container-narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a> &rsaquo; News
+        </nav>
+        <h1>Latest Mining &amp; Metals News</h1>
+        <p class="subtitle">Real-time coverage of copper, gold, silver, lithium, and base metals markets.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="news-filter-bar" role="toolbar" aria-label="Filter news by metal">
+          <button type="button" class="news-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="news-filter-btn" data-filter="copper" aria-pressed="false">Copper</button>
+          <button type="button" class="news-filter-btn" data-filter="gold" aria-pressed="false">Gold</button>
+          <button type="button" class="news-filter-btn" data-filter="silver" aria-pressed="false">Silver</button>
+          <button type="button" class="news-filter-btn" data-filter="lithium" aria-pressed="false">Lithium</button>
+          <button type="button" class="news-filter-btn" data-filter="diversified" aria-pressed="false">Diversified</button>
+        </div>
+
+        <div id="news-cards-full" class="news-grid"></div>
+
+        <p style="font-size: 14px; color: var(--text-secondary); margin-top: 24px; max-width: 720px;">
+          News is fetched from public sources. For premium analysis on how news impacts specific stocks, <a href="premium.html">upgrade to Premium</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Chart the Headlines</h2>
+        <p class="section-subtitle">Pair breaking mining news with live price action—screen miners, commodities, and indices on one platform.</p>
+
+        <div class="affiliate-box">
+          <h4>TradingView — Real-Time Charting Alongside News</h4>
+          <p>Track copper, gold, silver, and miners with professional charts, alerts, and screeners while you read the latest sector headlines.</p>
+          <div class="features">
+            <span>Multi-asset charts</span>
+            <span>Custom indicators</span>
+            <span>Stock &amp; commodity screeners</span>
+            <span>Alerts &amp; watchlists</span>
+          </div>
+          <a href="https://www.tradingview.com" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-affiliate="tradingview-news">
+            Try TradingView Free &rarr;
+          </a>
+          <p class="affiliate-disclosure">Affiliate disclosure: We may earn a commission if you sign up through our link. This does not affect our editorial independence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="email-cta">
+          <h3>Get Our Weekly Mining Stock Picks</h3>
+          <p>Free weekly newsletter with our latest analysis, top picks, and market insights delivered to your inbox.</p>
+          <form class="email-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px;">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">The Resource Investor</div>
+          <p class="footer-desc">Independent mining stock analysis and investment research. Helping investors find undervalued opportunities in the resource sector.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Site</h5>
+          <a href="stocks.html">Stocks</a>
+          <a href="news.html">News</a>
+          <a href="premium.html">Premium</a>
+        </div>
+        <div class="footer-col">
+          <h5>Guides</h5>
+          <a href="articles/best-mining-stocks-2026.html">Best Mining Stocks</a>
+          <a href="articles/copper-stocks-guide.html">Copper Investing</a>
+          <a href="articles/gold-mining-stocks.html">Gold Mining Stocks</a>
+          <a href="articles/mining-etfs-vs-stocks.html">ETFs vs Stocks</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About</a>
+          <a href="about.html#disclosure">Affiliate Disclosure</a>
+          <a href="about.html#privacy">Privacy Policy</a>
+          <a href="about.html#terms">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Resource Investor. All rights reserved.</span>
+        <p class="disclosure">Affiliate Disclosure: Some links on this site are affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase or sign up. This helps support our free content. We only recommend products we genuinely believe in. Nothing on this site constitutes financial advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stocks-data.js"></script>
+  <script src="js/main-v2.js"></script>
+</body>
+</html>

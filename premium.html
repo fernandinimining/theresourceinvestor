@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Mining Analysis — The Resource Investor</title>
+  <meta name="description" content="Interactive sensitivity analysis for 20+ global miners. Adjust copper, gold, silver, and lithium prices and see real-time impact on revenue, EBITDA, and per-share value.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/new-styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">&#9650;</span>
+        The Resource Investor
+        <span class="premium-status" aria-live="polite"></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="stocks.html">Stocks</a>
+        <a href="articles/copper-stocks-guide.html">Copper</a>
+        <a href="articles/gold-mining-stocks.html">Gold</a>
+        <a href="news.html">News</a>
+        <a href="premium.html" class="active">Premium</a>
+        <a href="about.html">About</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="premium-hero">
+      <div class="container">
+        <h1>Premium Mining Intelligence</h1>
+        <p>Interactive sensitivity analysis for 20+ global miners. Adjust metal prices. See real-time impact on revenue, EBITDA, and per-share value.</p>
+        <div class="premium-price">$14.99<span class="premium-price-sub">/month</span></div>
+        <p style="margin-bottom: 20px;">
+          <a href="https://buy.stripe.com/test_placeholder" class="premium-cta-btn" id="stripe-checkout-btn">Start Premium Now</a>
+        </p>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.55); margin: 0;">Cancel anytime. 7-day free trial.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What You Get</h2>
+        <div class="premium-features">
+          <div class="premium-feature">
+            <h4>Sensitivity Analysis</h4>
+            <p>Adjust Cu, Au, Ag, Li prices with sliders. See real-time EBITDA, FCF, per-share value.</p>
+          </div>
+          <div class="premium-feature">
+            <h4>20+ Global Miners</h4>
+            <p>Every major copper, gold, silver, and lithium producer. All US-tradeable.</p>
+          </div>
+          <div class="premium-feature">
+            <h4>Heatmap Matrix</h4>
+            <p>Visualize how price changes cascade through each company&rsquo;s P&amp;L.</p>
+          </div>
+          <div class="premium-feature">
+            <h4>Public Data Only</h4>
+            <p>All inputs from 10-K, 20-F, annual reports. Transparent methodology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Try It: Freeport-McMoRan (FCX) Sensitivity</h2>
+        <p class="section-subtitle">Preview the tool below. Full interactivity unlocks with Premium.</p>
+        <div id="sens-fcx" data-sensitivity-ticker="FCX"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">All Available Analyses</h2>
+        <p class="section-subtitle">Jump to any ticker. Each block uses live data from our filings-based model.</p>
+
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">FCX &mdash; Freeport-McMoRan</h3>
+          <div id="sens-FCX" data-sensitivity-ticker="FCX"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">SCCO &mdash; Southern Copper</h3>
+          <div id="sens-SCCO" data-sensitivity-ticker="SCCO"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">TECK &mdash; Teck Resources</h3>
+          <div id="sens-TECK" data-sensitivity-ticker="TECK"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">HBM &mdash; Hudbay Minerals</h3>
+          <div id="sens-HBM" data-sensitivity-ticker="HBM"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">GOLD &mdash; Barrick Gold</h3>
+          <div id="sens-GOLD" data-sensitivity-ticker="GOLD"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">NEM &mdash; Newmont Corporation</h3>
+          <div id="sens-NEM" data-sensitivity-ticker="NEM"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AEM &mdash; Agnico Eagle Mines</h3>
+          <div id="sens-AEM" data-sensitivity-ticker="AEM"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">KGC &mdash; Kinross Gold</h3>
+          <div id="sens-KGC" data-sensitivity-ticker="KGC"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">BTG &mdash; B2Gold Corp</h3>
+          <div id="sens-BTG" data-sensitivity-ticker="BTG"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">GFI &mdash; Gold Fields</h3>
+          <div id="sens-GFI" data-sensitivity-ticker="GFI"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AU &mdash; AngloGold Ashanti</h3>
+          <div id="sens-AU" data-sensitivity-ticker="AU"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">PAAS &mdash; Pan American Silver</h3>
+          <div id="sens-PAAS" data-sensitivity-ticker="PAAS"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AG &mdash; First Majestic Silver</h3>
+          <div id="sens-AG" data-sensitivity-ticker="AG"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">BHP &mdash; BHP Group</h3>
+          <div id="sens-BHP" data-sensitivity-ticker="BHP"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">RIO &mdash; Rio Tinto</h3>
+          <div id="sens-RIO" data-sensitivity-ticker="RIO"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">VALE &mdash; Vale S.A.</h3>
+          <div id="sens-VALE" data-sensitivity-ticker="VALE"></div>
+        </div>
+        <div style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">ALB &mdash; Albemarle Corporation</h3>
+          <div id="sens-ALB" data-sensitivity-ticker="ALB"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="email-cta">
+          <h3>Get Our Weekly Mining Stock Picks</h3>
+          <p>Free weekly newsletter with our latest analysis, top picks, and market insights delivered to your inbox.</p>
+          <form class="email-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px;">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">The Resource Investor</div>
+          <p class="footer-desc">Independent mining stock analysis and investment research. Helping investors find undervalued opportunities in the resource sector.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Guides</h5>
+          <a href="articles/best-mining-stocks-2026.html">Best Mining Stocks</a>
+          <a href="articles/copper-stocks-guide.html">Copper Investing</a>
+          <a href="articles/gold-mining-stocks.html">Gold Mining Stocks</a>
+          <a href="articles/mining-etfs-vs-stocks.html">ETFs vs Stocks</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="articles/best-stock-screeners.html">Stock Screeners</a>
+          <a href="https://www.interactivebrokers.com" target="_blank" rel="noopener sponsored">Interactive Brokers</a>
+          <a href="https://www.tradingview.com" target="_blank" rel="noopener sponsored">TradingView</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="about.html#disclosure">Affiliate Disclosure</a>
+          <a href="about.html#privacy">Privacy Policy</a>
+          <a href="about.html#terms">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 The Resource Investor. All rights reserved.</span>
+        <p class="disclosure">Affiliate Disclosure: Some links on this site are affiliate links, meaning we may earn a commission at no extra cost to you if you make a purchase or sign up. This helps support our free content. We only recommend products we genuinely believe in. Nothing on this site constitutes financial advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stocks-data.js"></script>
+  <script src="js/sensitivity.js"></script>
+  <script src="js/main-v2.js"></script>
+</body>
+</html>
