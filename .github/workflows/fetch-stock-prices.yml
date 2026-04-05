@@ -1,0 +1,107 @@
+name: Daily Stock Prices
+
+on:
+  schedule:
+    - cron: '0 1 * * 1-5'   # 1 AM UTC weekdays (after US market close)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch stock prices from Financial Modeling Prep
+        run: |
+          TICKERS="FCX,SCCO,TECK,HBM,GOLD,NEM,AEM,KGC,BTG,GFI,AU,PAAS,AG,BHP,RIO,VALE,ALB,LAC"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          OUT_FILE="stock-prices.json"
+
+          if [ -z "$FMP_API_KEY" ]; then
+            echo "No FMP_API_KEY set, skipping"
+            exit 0
+          fi
+
+          QUOTES=$(curl -sf "https://financialmodelingprep.com/api/v3/quote/${TICKERS}?apikey=${FMP_API_KEY}" || echo "[]")
+
+          node -e "
+          const fs = require('fs');
+          const raw = process.env.QUOTES_RAW || '[]';
+          let quotes = [];
+          try { quotes = JSON.parse(raw); } catch(e) { console.error('Parse error:', e); }
+
+          const prices = {};
+          quotes.forEach(q => {
+            prices[q.symbol] = {
+              price: q.price,
+              change: q.change,
+              changePct: q.changesPercentage,
+              dayHigh: q.dayHigh,
+              dayLow: q.dayLow,
+              yearHigh: q.yearHigh,
+              yearLow: q.yearLow,
+              volume: q.volume,
+              avgVolume: q.avgVolume,
+              marketCap: q.marketCap,
+              pe: q.pe,
+              eps: q.eps
+            };
+          });
+
+          // Also fetch metal prices
+          const metals_url = 'https://financialmodelingprep.com/api/v3/quote/COPX,GLD,SLV,LIT?apikey=' + process.env.FMP_KEY;
+
+          const output = {
+            fetched_at: '${TIMESTAMP}',
+            count: Object.keys(prices).length,
+            prices: prices
+          };
+          fs.writeFileSync('${OUT_FILE}', JSON.stringify(output, null, 2));
+          console.log('Wrote prices for ' + output.count + ' tickers');
+          "
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          QUOTES_RAW: ${{ env.QUOTES }}
+          FMP_KEY: ${{ secrets.FMP_API_KEY }}
+
+      - name: Fetch commodity prices
+        run: |
+          if [ -z "$FMP_API_KEY" ]; then exit 0; fi
+
+          COMMODITIES=$(curl -sf "https://financialmodelingprep.com/api/v3/quote/GCUSD,SIUSD,CLUSD,HGUSD?apikey=${FMP_API_KEY}" || echo "[]")
+
+          node -e "
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('stock-prices.json', 'utf8'));
+          const raw = process.env.COMMODITIES_RAW || '[]';
+          let commodities = [];
+          try { commodities = JSON.parse(raw); } catch(e) {}
+
+          data.metals = {};
+          commodities.forEach(c => {
+            if (c.symbol === 'GCUSD') data.metals.gold = { price: c.price, change: c.changesPercentage };
+            if (c.symbol === 'SIUSD') data.metals.silver = { price: c.price, change: c.changesPercentage };
+            if (c.symbol === 'HGUSD') data.metals.copper = { price: c.price, change: c.changesPercentage };
+          });
+
+          fs.writeFileSync('stock-prices.json', JSON.stringify(data, null, 2));
+          console.log('Added commodity prices');
+          "
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          COMMODITIES_RAW: ${{ env.COMMODITIES }}
+
+      - name: Commit updated prices
+        run: |
+          git config user.name "price-bot"
+          git config user.email "bot@globalminingintel.com"
+          git add stock-prices.json
+          if git diff --cached --quiet; then
+            echo "No price changes to commit"
+          else
+            git commit -m "Auto-update stock prices $(date -u +%Y-%m-%d)"
+            git push
+          fi

@@ -1,0 +1,29 @@
+{
+  "fetched_at": "2026-04-04T00:00:00Z",
+  "count": 18,
+  "prices": {
+    "FCX": { "price": 46.82, "change": 0.73, "changePct": 1.58, "dayHigh": 47.10, "dayLow": 45.90, "yearHigh": 55.20, "yearLow": 32.80, "volume": 12400000, "marketCap": 66930000000, "pe": 14.2, "eps": 3.30 },
+    "SCCO": { "price": 110.25, "change": -0.45, "changePct": -0.41, "dayHigh": 111.50, "dayLow": 109.80, "yearHigh": 118.00, "yearLow": 72.50, "volume": 2100000, "marketCap": 85100000000, "pe": 22.1, "eps": 4.99 },
+    "TECK": { "price": 47.10, "change": 1.20, "changePct": 2.61, "dayHigh": 47.50, "dayLow": 45.60, "yearHigh": 52.30, "yearLow": 33.10, "volume": 5800000, "marketCap": 24000000000, "pe": 10.3, "eps": 4.57 },
+    "HBM": { "price": 13.45, "change": 0.18, "changePct": 1.36, "dayHigh": 13.60, "dayLow": 13.20, "yearHigh": 15.80, "yearLow": 7.90, "volume": 3200000, "marketCap": 5250000000, "pe": 11.4, "eps": 1.18 },
+    "GOLD": { "price": 21.75, "change": 0.32, "changePct": 1.49, "dayHigh": 22.00, "dayLow": 21.30, "yearHigh": 24.50, "yearLow": 14.80, "volume": 9500000, "marketCap": 38060000000, "pe": 15.1, "eps": 1.44 },
+    "NEM": { "price": 43.60, "change": -0.28, "changePct": -0.64, "dayHigh": 44.20, "dayLow": 43.30, "yearHigh": 55.90, "yearLow": 33.20, "volume": 7200000, "marketCap": 54940000000, "pe": 18.4, "eps": 2.37 },
+    "AEM": { "price": 96.30, "change": 1.45, "changePct": 1.53, "dayHigh": 97.00, "dayLow": 94.50, "yearHigh": 102.00, "yearLow": 58.40, "volume": 3100000, "marketCap": 48150000000, "pe": 20.2, "eps": 4.77 },
+    "KGC": { "price": 12.35, "change": 0.15, "changePct": 1.23, "dayHigh": 12.50, "dayLow": 12.10, "yearHigh": 14.20, "yearLow": 6.80, "volume": 11000000, "marketCap": 15070000000, "pe": 12.0, "eps": 1.03 },
+    "BTG": { "price": 5.02, "change": 0.08, "changePct": 1.62, "dayHigh": 5.10, "dayLow": 4.90, "yearHigh": 5.80, "yearLow": 2.90, "volume": 6500000, "marketCap": 6530000000, "pe": 9.2, "eps": 0.55 },
+    "GFI": { "price": 19.10, "change": -0.20, "changePct": -1.04, "dayHigh": 19.50, "dayLow": 18.90, "yearHigh": 22.30, "yearLow": 12.40, "volume": 4200000, "marketCap": 17000000000, "pe": 13.3, "eps": 1.44 },
+    "AU": { "price": 33.40, "change": 0.55, "changePct": 1.67, "dayHigh": 33.80, "dayLow": 32.70, "yearHigh": 36.50, "yearLow": 19.20, "volume": 2800000, "marketCap": 14030000000, "pe": 11.0, "eps": 3.04 },
+    "PAAS": { "price": 27.80, "change": 0.40, "changePct": 1.46, "dayHigh": 28.10, "dayLow": 27.20, "yearHigh": 30.50, "yearLow": 16.80, "volume": 3400000, "marketCap": 10010000000, "pe": 16.2, "eps": 1.72 },
+    "AG": { "price": 11.05, "change": -0.15, "changePct": -1.34, "dayHigh": 11.30, "dayLow": 10.90, "yearHigh": 13.40, "yearLow": 5.60, "volume": 4800000, "marketCap": 3200000000, "pe": 28.3, "eps": 0.39 },
+    "BHP": { "price": 30.65, "change": 0.22, "changePct": 0.72, "dayHigh": 30.90, "dayLow": 30.30, "yearHigh": 34.80, "yearLow": 24.50, "volume": 8900000, "marketCap": 155100000000, "pe": 12.1, "eps": 2.53 },
+    "RIO": { "price": 67.90, "change": -0.80, "changePct": -1.16, "dayHigh": 69.00, "dayLow": 67.50, "yearHigh": 78.50, "yearLow": 56.20, "volume": 3600000, "marketCap": 110000000000, "pe": 10.0, "eps": 6.79 },
+    "VALE": { "price": 11.12, "change": 0.10, "changePct": 0.91, "dayHigh": 11.30, "dayLow": 10.95, "yearHigh": 14.80, "yearLow": 9.50, "volume": 18500000, "marketCap": 48050000000, "pe": 7.1, "eps": 1.57 },
+    "ALB": { "price": 102.50, "change": 2.30, "changePct": 2.30, "dayHigh": 103.80, "dayLow": 99.50, "yearHigh": 120.00, "yearLow": 68.00, "volume": 2400000, "marketCap": 12000000000, "pe": 18.5, "eps": 5.54 },
+    "LAC": { "price": 16.70, "change": 0.45, "changePct": 2.77, "dayHigh": 17.00, "dayLow": 16.10, "yearHigh": 22.50, "yearLow": 8.20, "volume": 3100000, "marketCap": 3510000000, "pe": null, "eps": -0.71 }
+  },
+  "metals": {
+    "copper": { "price": 4.82, "change": 1.26 },
+    "gold": { "price": 3215.40, "change": 0.42 },
+    "silver": { "price": 38.25, "change": 0.85 }
+  }
+}
