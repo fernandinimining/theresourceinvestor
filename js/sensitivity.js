@@ -1,7 +1,7 @@
 /*
  * sensitivity.js — Interactive mining stock sensitivity analysis engine
  * Premium feature: metal price sliders with real-time financial impact
- * Uses only public data from stocks-data.js
+ * Model: Anchored on reported financials; metal price changes flow through at ~85% to EBITDA
  */
 (function () {
   'use strict';
@@ -13,53 +13,63 @@
     } catch (e) { return false; }
   }
 
-  function calcStockSensitivity(stock, prices) {
-    if (!stock || !stock.metals || !stock.financials) return null;
-    var revenue = 0;
-    var productionCost = 0;
+  function getDefaultPrice(metal) {
+    return (typeof METAL_DEFAULTS !== 'undefined' && METAL_DEFAULTS[metal]) ? METAL_DEFAULTS[metal].current : 0;
+  }
 
+  function getLivePrice(stock) {
+    if (stock && stock._live && stock._live.price) return stock._live.price;
+    return null;
+  }
+
+  function calcDeltaRevenueM(stock, prices) {
+    var delta = 0;
     Object.keys(stock.metals).forEach(function (metal) {
       var m = stock.metals[metal];
-      var price = prices[metal] || 0;
+      var currentPrice = prices[metal] || 0;
+      var defaultPrice = getDefaultPrice(metal);
+      var priceDelta = currentPrice - defaultPrice;
 
       if (m.production_mlbs) {
-        revenue += m.production_mlbs * price;
-        productionCost += m.production_mlbs * (m.aisc_per_lb || 0);
+        delta += m.production_mlbs * priceDelta;
       } else if (m.production_koz) {
-        revenue += m.production_koz * price;
-        productionCost += m.production_koz * (m.aisc_per_oz || 0);
-      } else if (m.production_mt) {
-        revenue += m.production_mt * price * 1e6;
-        productionCost += m.production_mt * (m.aisc_per_t || 0) * 1e6;
+        delta += m.production_koz * priceDelta / 1000;
       } else if (m.production_kt) {
-        revenue += m.production_kt * price * 1000;
-        productionCost += m.production_kt * (m.aisc_per_t || 0) * 1000;
+        delta += m.production_kt * priceDelta / 1000;
+      } else if (m.production_mt) {
+        delta += m.production_mt * priceDelta;
       } else if (m.production_kt_lce) {
-        revenue += m.production_kt_lce * price * 1000;
-        productionCost += m.production_kt_lce * (m.aisc_per_t || 0) * 1000;
+        delta += m.production_kt_lce * priceDelta / 1000;
       }
     });
+    return delta;
+  }
 
-    var revenueM = revenue / 1e6;
-    var costM = productionCost / 1e6;
+  function calcStockSensitivity(stock, prices) {
+    if (!stock || !stock.metals || !stock.financials) return null;
     var f = stock.financials;
-    var ebitda = revenueM - costM;
-    var taxRate = f.tax_rate || 0.30;
-    var fcf = ebitda - (f.capex_m || 0);
-    var afterTax = fcf * (1 - taxRate);
-    var ev = ebitda * 6;
-    var equity = ev - (f.net_debt_m || 0);
-    var perShare = f.shares_m ? equity / f.shares_m : 0;
+    var deltaM = calcDeltaRevenueM(stock, prices);
+
+    var flowThrough = 0.85;
+    var revenueM = f.revenue_m + deltaM;
+    var ebitdaM = f.ebitda_m + (deltaM * flowThrough);
+    var marginPct = revenueM > 0 ? (ebitdaM / revenueM) * 100 : 0;
+    var fcfM = ebitdaM - (f.capex_m || 0);
+    var afterTaxM = fcfM * (1 - (f.tax_rate || 0.30));
+    var multiple = stock.ev_ebitda || 6;
+    var evM = ebitdaM * multiple;
+    var equityM = evM - (f.net_debt_m || 0);
+    var perShare = f.shares_m ? equityM / f.shares_m : 0;
 
     return {
       revenue_m: Math.round(revenueM),
-      ebitda_m: Math.round(ebitda),
-      fcf_m: Math.round(fcf),
-      after_tax_fcf_m: Math.round(afterTax),
-      implied_ev_m: Math.round(ev),
-      implied_equity_m: Math.round(equity),
+      ebitda_m: Math.round(ebitdaM),
+      fcf_m: Math.round(fcfM),
+      after_tax_fcf_m: Math.round(afterTaxM),
+      implied_ev_m: Math.round(evM),
+      implied_equity_m: Math.round(equityM),
       per_share: Math.round(perShare * 100) / 100,
-      margin_pct: revenueM > 0 ? Math.round((ebitda / revenueM) * 100) : 0
+      margin_pct: Math.round(marginPct)
     };
   }
 
@@ -82,6 +92,11 @@
       });
     });
     return { metal: metalLabel, unit: metalUnit, rows: rows };
+  }
+
+  function fmtM(n) {
+    if (Math.abs(n) >= 1000) return '$' + (n / 1000).toFixed(1) + 'B';
+    return '$' + n.toLocaleString() + 'M';
   }
 
   function renderSensitivityWidget(containerId, stock) {
@@ -107,11 +122,18 @@
     var metals = Object.keys(stock.metals);
     var currentPrices = {};
     metals.forEach(function (m) {
-      currentPrices[m] = METAL_DEFAULTS[m] ? METAL_DEFAULTS[m].current : 0;
+      currentPrices[m] = getDefaultPrice(m);
     });
 
+    var livePrice = getLivePrice(stock);
+    var priceTag = livePrice ? '<span style="font-family:JetBrains Mono,monospace;font-size:14px;font-weight:700;color:var(--primary);background:rgba(37,99,235,0.08);padding:4px 10px;border-radius:6px;">Current: $' + livePrice.toFixed(2) + '</span>' : '';
+
     var html = '<div class="sensitivity-tool">';
-    html += '<h3 class="sensitivity-title"><span class="premium-badge">PREMIUM</span> ' + stock.ticker + ' Sensitivity Analysis</h3>';
+    html += '<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;">';
+    html += '<h3 class="sensitivity-title" style="margin:0;"><span class="premium-badge">PREMIUM</span> ' + stock.ticker + ' Sensitivity Analysis</h3>';
+    html += priceTag;
+    html += '</div>';
+
     html += '<div class="sensitivity-sliders">';
     metals.forEach(function (m) {
       var def = METAL_DEFAULTS[m];
@@ -128,7 +150,7 @@
 
     html += '<div class="sensitivity-results" id="results-' + containerId + '"></div>';
     html += '<div class="sensitivity-heatmap" id="heatmap-' + containerId + '"></div>';
-    html += '<p class="sensitivity-disclaimer">Illustrative estimates based on public filings. Not financial advice. Simplified model.</p>';
+    html += '<p class="sensitivity-disclaimer">Model anchored on reported FY financials. Revenue delta from price changes flows to EBITDA at ~85%. EV/EBITDA multiple: ' + (stock.ev_ebitda || 6) + 'x. Not financial advice.</p>';
     html += '</div>';
 
     container.innerHTML = html;
@@ -147,16 +169,25 @@
       var result = calcStockSensitivity(stock, prices);
       if (!result) return;
 
+      var shareClass = result.per_share >= 0 ? 'positive' : 'negative';
+      var livePx = getLivePrice(stock);
+      var upsideHtml = '';
+      if (livePx && result.per_share > 0) {
+        var upside = ((result.per_share - livePx) / livePx * 100).toFixed(1);
+        var upsideColor = upside >= 0 ? '#059669' : '#dc2626';
+        upsideHtml = '<div style="font-size:11px;color:' + upsideColor + ';margin-top:2px;">' + (upside >= 0 ? '+' : '') + upside + '% vs market</div>';
+      }
+
       var resultsDiv = document.getElementById('results-' + containerId);
       if (resultsDiv) {
         resultsDiv.innerHTML =
           '<div class="result-cards">' +
-            '<div class="result-card"><div class="result-label">Revenue</div><div class="result-value">$' + result.revenue_m.toLocaleString() + 'M</div></div>' +
-            '<div class="result-card"><div class="result-label">EBITDA</div><div class="result-value ' + (result.ebitda_m >= 0 ? 'positive' : 'negative') + '">$' + result.ebitda_m.toLocaleString() + 'M</div></div>' +
+            '<div class="result-card"><div class="result-label">Revenue</div><div class="result-value">' + fmtM(result.revenue_m) + '</div></div>' +
+            '<div class="result-card"><div class="result-label">EBITDA</div><div class="result-value ' + (result.ebitda_m >= 0 ? 'positive' : 'negative') + '">' + fmtM(result.ebitda_m) + '</div></div>' +
             '<div class="result-card"><div class="result-label">Margin</div><div class="result-value">' + result.margin_pct + '%</div></div>' +
-            '<div class="result-card"><div class="result-label">Free Cash Flow</div><div class="result-value ' + (result.fcf_m >= 0 ? 'positive' : 'negative') + '">$' + result.fcf_m.toLocaleString() + 'M</div></div>' +
-            '<div class="result-card"><div class="result-label">Implied EV</div><div class="result-value">$' + result.implied_ev_m.toLocaleString() + 'M</div></div>' +
-            '<div class="result-card highlight-card"><div class="result-label">Per Share Value</div><div class="result-value">$' + result.per_share.toFixed(2) + '</div></div>' +
+            '<div class="result-card"><div class="result-label">Free Cash Flow</div><div class="result-value ' + (result.fcf_m >= 0 ? 'positive' : 'negative') + '">' + fmtM(result.fcf_m) + '</div></div>' +
+            '<div class="result-card"><div class="result-label">Implied EV</div><div class="result-value">' + fmtM(result.implied_ev_m) + '</div></div>' +
+            '<div class="result-card highlight-card"><div class="result-label">Implied Share Value</div><div class="result-value ' + shareClass + '">$' + result.per_share.toFixed(2) + '</div>' + upsideHtml + '</div>' +
           '</div>';
       }
 
@@ -166,12 +197,12 @@
         var hm = buildHeatmap(stock, primaryMetal, METAL_DEFAULTS[primaryMetal].label, METAL_DEFAULTS[primaryMetal].unit, prices[primaryMetal], prices);
         if (hm) {
           var tbl = '<h4>' + hm.metal + ' Price Sensitivity</h4>';
-          tbl += '<table class="heatmap-table"><thead><tr><th>Change</th><th>Price (' + hm.unit + ')</th><th>EBITDA ($M)</th><th>Per Share</th><th>Margin</th></tr></thead><tbody>';
+          tbl += '<table class="heatmap-table"><thead><tr><th>Change</th><th>Price (' + hm.unit + ')</th><th>EBITDA</th><th>Implied Share</th><th>Margin</th></tr></thead><tbody>';
           hm.rows.forEach(function (r) {
             var cls = r.pct === 0 ? 'current-row' : (r.pct > 0 ? 'up-row' : 'down-row');
             tbl += '<tr class="' + cls + '"><td>' + (r.pct > 0 ? '+' : '') + r.pct + '%</td>';
             tbl += '<td>' + r.price.toLocaleString() + '</td>';
-            tbl += '<td>$' + r.ebitda.toLocaleString() + 'M</td>';
+            tbl += '<td>' + fmtM(r.ebitda) + '</td>';
             tbl += '<td>$' + r.per_share.toFixed(2) + '</td>';
             tbl += '<td>' + r.margin + '%</td></tr>';
           });
