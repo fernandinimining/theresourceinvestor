@@ -2216,21 +2216,6 @@ var MINES_DATA = {
       notes: "JV gold heap-leach mine. BVN 40.09% stake. FY2024 attributable ~10 koz Au (total mine ~25 koz). Near La Zanja."
     },
     {
-      name: "Yanacocha (equity)",
-      location: "Cajamarca",
-      country: "Peru",
-      ownership_pct: 43.65,
-      type: "Open pit + Underground",
-      primary_metal: "gold",
-      metals: ["gold", "copper", "silver"],
-      status: "Operating",
-      production: { copper_mlbs: null, gold_koz: 300, silver_koz: null },
-      costs: { aisc_per_oz: 1196, cash_cost_per_oz: 1003 },
-      reserves: { gold_moz: 12.8 },
-      mine_life_yrs: 15,
-      notes: "Newmont-operated (NEM 51.35%, BVN 43.65%). Largest gold mine in South America. BVN attributable ~131 koz Au. Yanacocha Sulfides expansion is a major Cu-Au underground project. Total mine FY2024 ~300 koz Au. AISC from NEM filing."
-    },
-    {
       name: "Cerro Verde (equity)",
       location: "Arequipa",
       country: "Peru",
