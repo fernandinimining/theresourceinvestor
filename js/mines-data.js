@@ -731,8 +731,8 @@ var MINES_DATA = {
       production: { copper_mlbs: 88, gold_koz: 20.8 },
       costs: { aisc_per_lb_cu: null, cash_cost_per_lb: null, net_cash_cost_per_lb: null },
       reserves: { copper_blbs: null, gold_moz: null },
-      mine_life_yrs: Cu 39,700 t (88 mlbs), Au 20.8 koz FY2024.,
-      notes: ""
+      mine_life_yrs: null,
+      notes: "Cu 39,700 t (88 mlbs), Au 20.8 koz FY2024."
     },
     {
       name: "Red Dog",
@@ -823,8 +823,8 @@ var MINES_DATA = {
       production: { copper_mlbs: null, gold_koz: null },
       costs: { aisc_per_lb_cu: null, cash_cost_per_lb: null, net_cash_cost_per_lb: null },
       reserves: { copper_blbs: null, gold_moz: 20 },
-      mine_life_yrs: Development; ~85,000 t/yr Cu target; ~20-year mine life cited.,
-      notes: ""
+      mine_life_yrs: 20,
+      notes: "Development; ~85,000 t/yr Cu target; ~20-year mine life cited."
     }
   ],
   "AEM": [
@@ -1975,7 +1975,7 @@ var MINES_DATA = {
       name: "PT Vale Indonesia",
       location: "Sulawesi / Halmahera",
       country: "Indonesia",
-      ownership_pct: ,
+      ownership_pct: null,
       type: "Open pit / RKEF",
       primary_metal: "nickel",
       metals: ["nickel"],
