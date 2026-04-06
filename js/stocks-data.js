@@ -226,7 +226,7 @@ var STOCKS_DATA = [
     ticker: "BVN", name: "Buenaventura", exchange: "NYSE",
     country: "Peru", region: "Americas",
     category: "gold", tags: ["gold","silver","copper","zinc"],
-    description: "Peru's largest publicly listed precious metals company. Operates 6 direct mines plus equity stakes in Yanacocha (43.65%, NEM JV) and Cerro Verde (19.58%, FCX JV). San Gabriel copper-gold project in development.",
+    description: "Peru's largest publicly listed precious metals company. Operates 6 direct mines plus equity stake in Cerro Verde (19.58%, FCX JV). San Gabriel copper-gold project in development.",
     market_cap_b: 9.7, ev_ebitda: 15.6, div_yield: 3.4, pe_ratio: 23,
     metals: {
       gold: { production_koz: 280, aisc_per_oz: 1200, pct_revenue: 0.55 },
@@ -235,7 +235,7 @@ var STOCKS_DATA = [
       zinc: { production_mlbs: 50, aisc_per_lb: 0.55, pct_revenue: 0.07 }
     },
     financials: {
-      revenue_m: 1155, ebitda_m: 630, net_income_m: 194,
+      revenue_m: 1354, ebitda_m: 630, net_income_m: 194,
       operating_costs_m: 724, capex_m: 320,
       cash_m: 478, net_debt_m: 148,
       shares_m: 254, tax_rate: 0.30

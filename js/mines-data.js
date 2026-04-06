@@ -476,7 +476,7 @@ var MINES_DATA = {
       notes: "AISC $1816/oz FY2024."
     },
     {
-      name: "PeÃ±asquito",
+      name: "Penasquito",
       location: "Zacatecas",
       country: "Mexico",
       ownership_pct: 100,
@@ -643,7 +643,7 @@ var MINES_DATA = {
       notes: "Southern Peru copper cluster."
     },
     {
-      name: "TÃ­a MarÃ­a",
+      name: "Tia Maria",
       location: "Islay",
       country: "Peru",
       ownership_pct: 100,
@@ -706,7 +706,7 @@ var MINES_DATA = {
     },
     {
       name: "Quebrada Blanca Phase 2 (QB2)",
-      location: "TarapacÃ¡",
+      location: "Tarapaca",
       country: "Chile",
       ownership_pct: 60,
       type: "Open pit",
@@ -1407,7 +1407,7 @@ var MINES_DATA = {
       notes: "Underground mining complex."
     },
     {
-      name: "CuiabÃ¡ / Lamego",
+      name: "Cuiaba / Lamego",
       location: "Minas Gerais",
       country: "Brazil",
       ownership_pct: 100,
@@ -1455,7 +1455,7 @@ var MINES_DATA = {
     },
     {
       name: "San Vicente",
-      location: "PotosÃ­",
+      location: "Potosi",
       country: "Bolivia",
       ownership_pct: 95,
       type: "Underground",
@@ -1499,7 +1499,7 @@ var MINES_DATA = {
       notes: "Record 197 koz Au FY2024."
     },
     {
-      name: "El PeÃ±Ã³n",
+      name: "El Penon",
       location: "Antofagasta",
       country: "Chile",
       ownership_pct: 100,
@@ -1867,8 +1867,8 @@ var MINES_DATA = {
   ],
   "VALE": [
     {
-      name: "CarajÃ¡s / Northern System",
-      location: "ParÃ¡",
+      name: "Carajas / Northern System",
+      location: "Para",
       country: "Brazil",
       ownership_pct: 100,
       type: "Open pit",
@@ -1913,7 +1913,7 @@ var MINES_DATA = {
     },
     {
       name: "Salobo",
-      location: "ParÃ¡",
+      location: "Para",
       country: "Brazil",
       ownership_pct: 100,
       type: "Open pit",
@@ -1957,8 +1957,8 @@ var MINES_DATA = {
       notes: "Integrated nickel-copper-PGM operations."
     },
     {
-      name: "OnÃ§a Puma",
-      location: "ParÃ¡",
+      name: "Onca Puma",
+      location: "Para",
       country: "Brazil",
       ownership_pct: 100,
       type: "Open pit / furnace",

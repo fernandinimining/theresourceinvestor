@@ -176,7 +176,7 @@
     if (el('ov-name')) el('ov-name').textContent = stock ? stock.name : ticker;
     if (el('ov-ticker')) el('ov-ticker').textContent = ticker + ' \u00b7 ' + (stock ? stock.exchange : '');
     if (el('ov-mcap')) el('ov-mcap').textContent = stock ? '$' + stock.market_cap_b + 'B' : '\u2014';
-    if (el('ov-cat')) el('ov-cat').textContent = stock ? stock.category.charAt(0).toUpperCase() + stock.category.slice(1) : '';
+    if (el('ov-cat')) el('ov-cat').textContent = stock && stock.category ? stock.category.charAt(0).toUpperCase() + stock.category.slice(1) : '';
     var countEl = el('mine-count') || el('mine-table-caption');
     if (countEl) countEl.textContent = mines.length + ' operations';
 

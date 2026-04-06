@@ -16,7 +16,7 @@ jobs:
 
       - name: Fetch stock prices from Financial Modeling Prep
         run: |
-          TICKERS="FCX,SCCO,TECK,HBM,GOLD,NEM,AEM,KGC,BTG,GFI,AU,PAAS,AG,BHP,RIO,VALE,ALB,LAC"
+          TICKERS="FCX,SCCO,TECK,HBM,GOLD,NEM,AEM,KGC,BTG,GFI,AU,BVN,PAAS,AG,BHP,RIO,VALE,ALB,LAC"
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           OUT_FILE="stock-prices.json"
 

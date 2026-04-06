@@ -1,6 +1,6 @@
 {
   "fetched_at": "2026-04-04T00:00:00Z",
-  "count": 18,
+  "count": 19,
   "prices": {
     "FCX": { "price": 46.82, "change": 0.73, "changePct": 1.58, "dayHigh": 47.10, "dayLow": 45.90, "yearHigh": 55.20, "yearLow": 32.80, "volume": 12400000, "marketCap": 66930000000, "pe": 14.2, "eps": 3.30 },
     "SCCO": { "price": 110.25, "change": -0.45, "changePct": -0.41, "dayHigh": 111.50, "dayLow": 109.80, "yearHigh": 118.00, "yearLow": 72.50, "volume": 2100000, "marketCap": 85100000000, "pe": 22.1, "eps": 4.99 },
@@ -13,6 +13,7 @@
     "BTG": { "price": 5.02, "change": 0.08, "changePct": 1.62, "dayHigh": 5.10, "dayLow": 4.90, "yearHigh": 5.80, "yearLow": 2.90, "volume": 6500000, "marketCap": 6530000000, "pe": 9.2, "eps": 0.55 },
     "GFI": { "price": 19.10, "change": -0.20, "changePct": -1.04, "dayHigh": 19.50, "dayLow": 18.90, "yearHigh": 22.30, "yearLow": 12.40, "volume": 4200000, "marketCap": 17000000000, "pe": 13.3, "eps": 1.44 },
     "AU": { "price": 33.40, "change": 0.55, "changePct": 1.67, "dayHigh": 33.80, "dayLow": 32.70, "yearHigh": 36.50, "yearLow": 19.20, "volume": 2800000, "marketCap": 14030000000, "pe": 11.0, "eps": 3.04 },
+    "BVN": { "price": 36.41, "change": -0.77, "changePct": -2.07, "dayHigh": 37.31, "dayLow": 34.88, "yearHigh": 44.00, "yearLow": 18.50, "volume": 880000, "marketCap": 9250000000, "pe": 23.0, "eps": 1.62 },
     "PAAS": { "price": 27.80, "change": 0.40, "changePct": 1.46, "dayHigh": 28.10, "dayLow": 27.20, "yearHigh": 30.50, "yearLow": 16.80, "volume": 3400000, "marketCap": 10010000000, "pe": 16.2, "eps": 1.72 },
     "AG": { "price": 11.05, "change": -0.15, "changePct": -1.34, "dayHigh": 11.30, "dayLow": 10.90, "yearHigh": 13.40, "yearLow": 5.60, "volume": 4800000, "marketCap": 3200000000, "pe": 28.3, "eps": 0.39 },
     "BHP": { "price": 30.65, "change": 0.22, "changePct": 0.72, "dayHigh": 30.90, "dayLow": 30.30, "yearHigh": 34.80, "yearLow": 24.50, "volume": 8900000, "marketCap": 155100000000, "pe": 12.1, "eps": 2.53 },
