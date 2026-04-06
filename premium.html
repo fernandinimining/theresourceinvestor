@@ -11,6 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/new-styles.css">
+  <style>
+    .hist-ticker-block { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border, #e2e8f0); }
+    .hist-ticker-block:last-child { border-bottom: none; }
+    .hist-charts-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    @media (max-width: 768px) { .hist-charts-row { grid-template-columns: 1fr; } }
+    .hist-chart-card { background: var(--bg-primary, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 10px; padding: 16px 14px 12px; box-shadow: 0 1px 3px rgba(15,23,42,.06); }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -85,77 +92,95 @@
         <h2 class="section-title">All Available Analyses</h2>
         <p class="section-subtitle">Jump to any ticker. Each block uses live data from our filings-based model.</p>
 
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">FCX &mdash; Freeport-McMoRan</h3>
           <div id="sens-FCX" data-sensitivity-ticker="FCX"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-FCX"></div><div class="hist-chart-card" id="hist-opex-FCX"></div><div class="hist-chart-card" id="hist-ebitda-FCX"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">SCCO &mdash; Southern Copper</h3>
           <div id="sens-SCCO" data-sensitivity-ticker="SCCO"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-SCCO"></div><div class="hist-chart-card" id="hist-opex-SCCO"></div><div class="hist-chart-card" id="hist-ebitda-SCCO"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">TECK &mdash; Teck Resources</h3>
           <div id="sens-TECK" data-sensitivity-ticker="TECK"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-TECK"></div><div class="hist-chart-card" id="hist-opex-TECK"></div><div class="hist-chart-card" id="hist-ebitda-TECK"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">HBM &mdash; Hudbay Minerals</h3>
           <div id="sens-HBM" data-sensitivity-ticker="HBM"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-HBM"></div><div class="hist-chart-card" id="hist-opex-HBM"></div><div class="hist-chart-card" id="hist-ebitda-HBM"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">GOLD &mdash; Barrick Gold</h3>
           <div id="sens-GOLD" data-sensitivity-ticker="GOLD"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-GOLD"></div><div class="hist-chart-card" id="hist-opex-GOLD"></div><div class="hist-chart-card" id="hist-ebitda-GOLD"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">NEM &mdash; Newmont Corporation</h3>
           <div id="sens-NEM" data-sensitivity-ticker="NEM"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-NEM"></div><div class="hist-chart-card" id="hist-opex-NEM"></div><div class="hist-chart-card" id="hist-ebitda-NEM"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AEM &mdash; Agnico Eagle Mines</h3>
           <div id="sens-AEM" data-sensitivity-ticker="AEM"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-AEM"></div><div class="hist-chart-card" id="hist-opex-AEM"></div><div class="hist-chart-card" id="hist-ebitda-AEM"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">KGC &mdash; Kinross Gold</h3>
           <div id="sens-KGC" data-sensitivity-ticker="KGC"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-KGC"></div><div class="hist-chart-card" id="hist-opex-KGC"></div><div class="hist-chart-card" id="hist-ebitda-KGC"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">BTG &mdash; B2Gold Corp</h3>
           <div id="sens-BTG" data-sensitivity-ticker="BTG"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-BTG"></div><div class="hist-chart-card" id="hist-opex-BTG"></div><div class="hist-chart-card" id="hist-ebitda-BTG"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">GFI &mdash; Gold Fields</h3>
           <div id="sens-GFI" data-sensitivity-ticker="GFI"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-GFI"></div><div class="hist-chart-card" id="hist-opex-GFI"></div><div class="hist-chart-card" id="hist-ebitda-GFI"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AU &mdash; AngloGold Ashanti</h3>
           <div id="sens-AU" data-sensitivity-ticker="AU"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-AU"></div><div class="hist-chart-card" id="hist-opex-AU"></div><div class="hist-chart-card" id="hist-ebitda-AU"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">BVN &mdash; Buenaventura</h3>
           <div id="sens-BVN" data-sensitivity-ticker="BVN"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-BVN"></div><div class="hist-chart-card" id="hist-opex-BVN"></div><div class="hist-chart-card" id="hist-ebitda-BVN"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">PAAS &mdash; Pan American Silver</h3>
           <div id="sens-PAAS" data-sensitivity-ticker="PAAS"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-PAAS"></div><div class="hist-chart-card" id="hist-opex-PAAS"></div><div class="hist-chart-card" id="hist-ebitda-PAAS"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">AG &mdash; First Majestic Silver</h3>
           <div id="sens-AG" data-sensitivity-ticker="AG"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-AG"></div><div class="hist-chart-card" id="hist-opex-AG"></div><div class="hist-chart-card" id="hist-ebitda-AG"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">BHP &mdash; BHP Group</h3>
           <div id="sens-BHP" data-sensitivity-ticker="BHP"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-BHP"></div><div class="hist-chart-card" id="hist-opex-BHP"></div><div class="hist-chart-card" id="hist-ebitda-BHP"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">RIO &mdash; Rio Tinto</h3>
           <div id="sens-RIO" data-sensitivity-ticker="RIO"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-RIO"></div><div class="hist-chart-card" id="hist-opex-RIO"></div><div class="hist-chart-card" id="hist-ebitda-RIO"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">VALE &mdash; Vale S.A.</h3>
           <div id="sens-VALE" data-sensitivity-ticker="VALE"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-VALE"></div><div class="hist-chart-card" id="hist-opex-VALE"></div><div class="hist-chart-card" id="hist-ebitda-VALE"></div></div>
         </div>
-        <div style="margin-bottom: 2.5rem;">
+        <div class="hist-ticker-block">
           <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: 12px;">ALB &mdash; Albemarle Corporation</h3>
           <div id="sens-ALB" data-sensitivity-ticker="ALB"></div>
+          <div class="hist-charts-row"><div class="hist-chart-card" id="hist-prod-ALB"></div><div class="hist-chart-card" id="hist-opex-ALB"></div><div class="hist-chart-card" id="hist-ebitda-ALB"></div></div>
         </div>
       </div>
     </section>
@@ -209,8 +234,10 @@
     </div>
   </footer>
 
-  <script src="js/stocks-data.js?v=4"></script>
-  <script src="js/sensitivity.js?v=4"></script>
+  <script src="js/stocks-data.js?v=5"></script>
+  <script src="js/sensitivity.js?v=5"></script>
+  <script src="js/historical-data.js?v=5"></script>
+  <script src="js/historical-charts.js?v=5"></script>
   <script src="js/main-v2.js"></script>
   <script>
   (function() {
